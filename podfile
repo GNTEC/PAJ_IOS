@@ -1,0 +1,18 @@
+platform :ios, ‘9.0’
+use_frameworks!
+
+target 'Pintura a Jato' do
+    use_frameworks!
+    pod 'MMDrawerController', '~> 0.5.7'
+    pod 'MMDrawerController-Storyboard', :podspec => 'https://raw.github.com/TomSwift/MMDrawerController-Storyboard/1.0.0/MMDrawerController-Storyboard.podspec'
+    pod 'MBProgressHUD'
+    use_frameworks!
+    pod 'FontAwesome+iOS'
+    pod 'Alamofire', '~> 4.4'
+    pod 'ObjectMapper','~> 2.2'
+    pod 'AlamofireObjectMapper', '~> 4.1'
+    use_frameworks!
+    pod 'Fabric'
+    pod 'Crashlytics'
+
+end

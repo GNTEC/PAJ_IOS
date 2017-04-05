@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4ej-lJ-e8I">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Termos de Uso e Contratos-->
+        <scene sceneID="aaD-pI-dN0">
+            <objects>
+                <viewController title="Termos de Uso e Contratos" automaticallyAdjustsScrollViewInsets="NO" id="4ej-lJ-e8I" customClass="TermosServicoListaViewController" customModule="Pintura_a_Jato" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U8u-ZE-aBi"/>
+                        <viewControllerLayoutGuide type="bottom" id="BvI-NA-cb6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HHU-k1-tMc">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q1L-fM-UM5">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SimpleTableCell" id="Pvz-31-HuV" customClass="CelulaManualListaTableViewCell" customModule="Pintura_a_Jato" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pvz-31-HuV" id="Noj-Ap-iVF">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPY-F0-Ayw">
+                                                    <rect key="frame" x="89" y="3" width="503" height="38"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FEd-Zb-ubA">
+                                                    <rect key="frame" x="27" y="3" width="38" height="38"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="38" id="r1B-fd-gpl"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vPY-F0-Ayw" firstAttribute="top" secondItem="Noj-Ap-iVF" secondAttribute="topMargin" constant="-5" id="2K8-bc-XFg"/>
+                                                <constraint firstItem="vPY-F0-Ayw" firstAttribute="leading" secondItem="FEd-Zb-ubA" secondAttribute="trailing" constant="24" id="8qD-Bx-CET"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vPY-F0-Ayw" secondAttribute="trailing" id="QWU-Z2-hxW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="FEd-Zb-ubA" secondAttribute="bottom" constant="-5.5" id="fHk-22-6kY"/>
+                                                <constraint firstItem="FEd-Zb-ubA" firstAttribute="top" secondItem="Noj-Ap-iVF" secondAttribute="topMargin" constant="-5" id="oiK-uI-YbD"/>
+                                                <constraint firstItem="FEd-Zb-ubA" firstAttribute="leading" secondItem="Noj-Ap-iVF" secondAttribute="leadingMargin" constant="19" id="u1b-u6-jMb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="vPY-F0-Ayw" secondAttribute="bottom" constant="-5.5" id="vkg-t6-14n"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descricao" destination="vPY-F0-Ayw" id="K9m-en-aUu"/>
+                                            <outlet property="imagem" destination="FEd-Zb-ubA" id="mM2-k6-7fA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4ej-lJ-e8I" id="HPq-82-oIN"/>
+                                    <outlet property="delegate" destination="4ej-lJ-e8I" id="rbF-lo-jdL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q1L-fM-UM5" firstAttribute="leading" secondItem="HHU-k1-tMc" secondAttribute="leadingMargin" constant="-20" id="007-42-UVj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Q1L-fM-UM5" secondAttribute="trailing" constant="-20" id="9dH-Fg-RbQ"/>
+                            <constraint firstItem="BvI-NA-cb6" firstAttribute="top" secondItem="Q1L-fM-UM5" secondAttribute="bottom" id="J6L-zK-LYa"/>
+                            <constraint firstItem="Q1L-fM-UM5" firstAttribute="top" secondItem="U8u-ZE-aBi" secondAttribute="bottom" id="YVo-lk-5Ww"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="Q1L-fM-UM5" id="ydg-ud-XXS"/>
+                        <segue destination="d2F-W2-1lZ" kind="show" identifier="SegueTermosListaParaExibicao" id="ero-gE-Fep"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SDH-Xo-iJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="720" y="125"/>
+        </scene>
+        <!--Exibir Documento-->
+        <scene sceneID="71Q-IO-yp9">
+            <objects>
+                <viewController title="Exibir Documento" id="d2F-W2-1lZ" customClass="TermosServicoExibirDocumentoViewController" customModule="Pintura_a_Jato" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4ab-vU-L6R"/>
+                        <viewControllerLayoutGuide type="bottom" id="CR1-kY-W0f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wyH-qo-NVd">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z7v-rQ-fCJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z7v-rQ-fCJ" firstAttribute="leading" secondItem="wyH-qo-NVd" secondAttribute="leadingMargin" constant="-20" id="0gJ-zE-bpy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z7v-rQ-fCJ" secondAttribute="trailing" constant="-20" id="2d3-Wb-F4t"/>
+                            <constraint firstItem="z7v-rQ-fCJ" firstAttribute="top" secondItem="4ab-vU-L6R" secondAttribute="bottom" id="afH-2X-3Z7"/>
+                            <constraint firstItem="CR1-kY-W0f" firstAttribute="top" secondItem="z7v-rQ-fCJ" secondAttribute="bottom" id="bbb-rc-WzN"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="webView" destination="z7v-rQ-fCJ" id="gbt-Df-Ue9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hq1-et-um6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1406" y="126"/>
+        </scene>
+    </scenes>
+</document>

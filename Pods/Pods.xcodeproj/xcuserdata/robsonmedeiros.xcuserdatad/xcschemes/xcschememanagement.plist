@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>FontAwesome+iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>MMDrawerController-Storyboard.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>MMDrawerController.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>Pods-Aplicativo iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>20C29E4D1FBD161EE1E5E1FF29F91BC5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>550F7EEAEEA17E3F92C873912E23B01C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5A6967AB7478729359BA6B9287017C73</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>91DD3A06013D443F75BA2DDC6567987F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9EA6C8B36421245869725D0DC7694322</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

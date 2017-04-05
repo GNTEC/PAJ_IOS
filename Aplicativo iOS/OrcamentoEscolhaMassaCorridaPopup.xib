@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" contentMode="scaleToFill" id="iN0-l3-epB" customClass="OrcamentoEscolhaMassaCorridaPopup" customModule="Pintura_a_Jato" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKj-J9-elD" userLabel="ViewFundo">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igB-s4-GQ3" userLabel="ViewInterna">
+                    <rect key="frame" x="20" y="190" width="560" height="220"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Necessita serviço de massa corrida para o %@ ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="snq-rR-zdN">
+                            <rect key="frame" x="8" y="8" width="544" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LS3-PT-Sge">
+                            <rect key="frame" x="472" y="132" width="80" height="80"/>
+                            <color key="backgroundColor" red="0.52549019610000003" green="0.80784313730000001" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="AbZ-eN-zYh"/>
+                                <constraint firstAttribute="width" constant="80" id="b2C-sd-CAl"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                            <state key="normal" image="user-plus_icon">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="40"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskClipToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="onFechar:" destination="iN0-l3-epB" eventType="touchUpInside" id="dMg-g6-MKz"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3b-75-ofG" userLabel="Botao Sim">
+                            <rect key="frame" x="220" y="37" width="48" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="Uya-sb-90e"/>
+                                <constraint firstAttribute="width" constant="48" id="fnH-5h-efI"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="retina_3a"/>
+                            <state key="selected" image="retina_3a_h"/>
+                            <connections>
+                                <action selector="onSim:" destination="iN0-l3-epB" eventType="touchUpInside" id="4bO-4y-3aD"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sim" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWr-yw-WOT">
+                            <rect key="frame" x="223" y="93" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEb-JQ-blO" userLabel="Botao Nao">
+                            <rect key="frame" x="292" y="37" width="48" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="48" id="2yP-tT-Uw9"/>
+                                <constraint firstAttribute="height" constant="48" id="Pu5-kM-BfD"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="retina_3b"/>
+                            <state key="selected" image="retina_3b_h"/>
+                            <connections>
+                                <action selector="onNao:" destination="iN0-l3-epB" eventType="touchUpInside" id="gIg-mS-W0d"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Não" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i09-zx-RtT">
+                            <rect key="frame" x="295" y="93" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="sWr-yw-WOT" firstAttribute="centerX" secondItem="d3b-75-ofG" secondAttribute="centerX" id="6rg-i2-3N8"/>
+                        <constraint firstItem="i09-zx-RtT" firstAttribute="centerX" secondItem="PEb-JQ-blO" secondAttribute="centerX" id="Fwi-wV-yLb"/>
+                        <constraint firstItem="snq-rR-zdN" firstAttribute="leading" secondItem="igB-s4-GQ3" secondAttribute="leading" constant="8" id="IyZ-cP-SPQ"/>
+                        <constraint firstItem="d3b-75-ofG" firstAttribute="top" secondItem="snq-rR-zdN" secondAttribute="bottom" constant="18" id="LBj-Lk-mkq"/>
+                        <constraint firstItem="snq-rR-zdN" firstAttribute="top" secondItem="igB-s4-GQ3" secondAttribute="top" constant="8" id="NJh-aK-F1A"/>
+                        <constraint firstAttribute="trailing" secondItem="LS3-PT-Sge" secondAttribute="trailing" constant="8" id="QtL-Jb-fwZ"/>
+                        <constraint firstItem="PEb-JQ-blO" firstAttribute="trailing" secondItem="igB-s4-GQ3" secondAttribute="centerX" constant="60" id="WEg-6l-hGA"/>
+                        <constraint firstItem="sWr-yw-WOT" firstAttribute="top" secondItem="d3b-75-ofG" secondAttribute="bottom" constant="8" id="hgA-63-UGU"/>
+                        <constraint firstItem="i09-zx-RtT" firstAttribute="top" secondItem="PEb-JQ-blO" secondAttribute="bottom" constant="8" id="iV1-4x-BTA"/>
+                        <constraint firstAttribute="bottom" secondItem="LS3-PT-Sge" secondAttribute="bottom" constant="8" id="nld-zb-YSX"/>
+                        <constraint firstAttribute="height" constant="220" id="oKY-hE-rgz"/>
+                        <constraint firstAttribute="trailing" secondItem="snq-rR-zdN" secondAttribute="trailing" constant="8" id="y1m-V3-UIj"/>
+                        <constraint firstItem="PEb-JQ-blO" firstAttribute="top" secondItem="d3b-75-ofG" secondAttribute="top" id="yEI-yC-s6a"/>
+                        <constraint firstItem="d3b-75-ofG" firstAttribute="leading" secondItem="igB-s4-GQ3" secondAttribute="centerX" constant="-60" id="zWE-2d-sgr"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="yKj-J9-elD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1NP-ks-2Mj"/>
+                <constraint firstAttribute="trailing" secondItem="yKj-J9-elD" secondAttribute="trailing" id="3IH-Qn-A1q"/>
+                <constraint firstAttribute="bottom" secondItem="yKj-J9-elD" secondAttribute="bottom" id="AGg-Qd-MDo"/>
+                <constraint firstItem="igB-s4-GQ3" firstAttribute="centerY" secondItem="yKj-J9-elD" secondAttribute="centerY" id="d4j-24-VQq"/>
+                <constraint firstItem="igB-s4-GQ3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="hb4-KQ-chK"/>
+                <constraint firstItem="yKj-J9-elD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="t3b-vc-BGq"/>
+                <constraint firstAttribute="trailing" secondItem="igB-s4-GQ3" secondAttribute="trailing" constant="20" id="tKB-er-KCn"/>
+            </constraints>
+            <connections>
+                <outlet property="botao_fechar" destination="LS3-PT-Sge" id="qCa-Vp-WQP"/>
+                <outlet property="botao_nao" destination="PEb-JQ-blO" id="CFD-Tf-SMm"/>
+                <outlet property="botao_sim" destination="d3b-75-ofG" id="42U-I6-edw"/>
+                <outlet property="label_titulo" destination="snq-rR-zdN" id="GFc-WM-p5W"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="retina_3a" width="192" height="192"/>
+        <image name="retina_3a_h" width="192" height="192"/>
+        <image name="retina_3b" width="192" height="192"/>
+        <image name="retina_3b_h" width="192" height="192"/>
+        <image name="user-plus_icon" width="231" height="191"/>
+    </resources>
+</document>

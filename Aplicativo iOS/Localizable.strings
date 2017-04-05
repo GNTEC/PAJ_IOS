@@ -1,0 +1,182 @@
+/* 
+  Localizable.strings
+  Pintura a Jato
+
+  Created by daniel on 11/09/16.
+  Copyright © 2016 Pintura à Jato. All rights reserved.
+*/
+"app_name" = "Pintura a Jato";
+"erro_falha_processamento" = "Erro durante o processamento. Se o problema persistir, entre em contato com o suporte.";
+"opcao_fechar" = "Fechar";
+"fa_cc_mastercard" = "\u{f1f1}";
+"fa_cc_visa" = "\u{f1f0}";
+"fa_edit" = "\u{f044}";
+"hello_blank_fragment" = "Hello blank fragment";
+"fa_plus_square_o" = "\u{f196}";
+"fa_tint" = "\u{f043}";
+"fa_copy" = "\u{f0c5}";
+"fa_plus" = "\u{f067}";
+"fa_minus" = "\u{f068}";
+"fa_remove" = "\u{f00d}";
+"fa_question" = "\u{f128}";
+"fa_question_circle" = "\u{f059}";
+"fa_check_square_o" = "\u{f046}";
+"fa_sign_in" = "\u{f090}";
+"fa_list_alt" = "\u{f022}";
+"fa_envelope_o" = "\u{f003}";
+"fa_building" = "\u{f1ad}";
+"fa_user_plus" = "\u{f234}";
+"fa_dollar" = "\u{f155}";
+"fa_credit_card" = "\u{f09d}";
+"fa_credit_card_alt" = "\u{f283}";
+"fa_money" = "\u{f0d6}";
+"fa_ellipsis_h" = "\u{f141}";
+"fa_user" = "\u{f007}";
+"fa_calendar" = "\u{f073}";
+"fa_lock" = "\u{f023}";
+"fa_commenting" = "\u{f27a}";
+"fa_book" = "\u{f02d}";
+"fa_shopping_cart" = "\u{f07a}";
+"fa_calendar_o" = "\u{f133}";
+"fa_history" = "\u{f1da}";
+"fa_star" = "\u{f005}";
+"fa_gavel" = "\u{f0e3}";
+"fa_sign_out" = "\u{f08b}";
+"fa_check" = "\u{f00c}";
+"fa_clock_o" = "\u{f017}";
+"fa_calendar_check_o" = "\u{f274}";
+"fa_paper_plane_o" = "\u{f1d9}";
+"fa_bars" = "\u{f0c9}";
+"fa_briefcase" = "\u{f0b1}";
+"fa_video_camera" = "\u{f03d}";
+"fa_headphones" = "\u{f025}";
+"fa_barcode" = "\u{f02a}";
+"fa_thumbs_up" = "\u{f164}";
+"fa_th" = "\u{f00a}";
+"fa_warning" = "\u{f071}";
+
+"titulo_popup_orcamento_escolha_tinta" = "Que cor deseja para as %@ do %@ ?";
+"titulo_popup_orcamento_escolha_massa_corrida" = "Necessita serviço de massa corrida para o %1$s ?";
+
+"pergunta_simples1" = "1ª pintura do ambiente ou uma repintura ?";
+"pergunta_simples2" = "O imóvel está desocupado de móveis e objetos ?";
+"pergunta_simples3" = "Necessita serviço de massa corrida?";
+"pergunta_simples4" = "Os ambientes à serem pintados são de gesso, reboco ou massa ?";
+"pergunta_simples5" = "O que será pintado ?";
+"pergunta_simples6" = "Existem trincas nos locais a\nserem pintados?";
+
+"resposta_simples_o_que_sera_pintado" = "Descrição dos Ambientes a serem pintados:";
+
+"resposta_simples1_sim" = "O lugar a ser pintado será 1ª pintura.";
+"resposta_simples1_nao" = "O lugar a ser pintado é uma Repintura.";
+
+"resposta_simples2_sim" = "Está desocupado de móveis e objetos.";
+"resposta_simples2_nao" = "Não está desocupado de móveis e objetos.";
+
+/*"resposta_simples3_sim" = "O lugar a ser pintado será 1ª pintura.";
+"resposta_simples3_nao" = "O lugar a ser pintado será 1ª pintura."*/
+
+"resposta_simples4_massa" = "O local a ser pintado é de Massa";
+"resposta_simples4_gesso" = "O local a ser pintado é de Gesso";
+"resposta_simples4_reboco" = "O local a ser pintado é de Reboco";
+
+/*"resposta_simples5_sim" = "O lugar a ser pintado será 1ª pintura.";
+"resposta_simples5_nao" = "O lugar a ser pintado será 1ª pintura"*/
+
+"literal_necessita_massa_corrida" = "Com massa corrida";
+"literal_nao_necessita_massa_corrida" = "Sem massa corrida";
+
+"resposta_trinca_sim" = "Existem trincas.";
+"resposta_trinca_nao" = "Não existem trincas";
+
+"literal_paredes_teto" = "Ambiente\nCompleto";
+"literal_somente_paredes" = "Somente\nParedes";
+"literal_somente_teto" = "Somente\nTeto";
+
+"literal_gesso" = "Gesso";
+"literal_reboco" = "Reboco";
+"literal_massa" = "Massa";
+"literal_sim" = "Sim";
+"literal_nao" = "Não";
+
+"literal_1a_pintura" = "1a\nPintura";
+"literal_repintura" = "Repintura";
+
+"mascara_ambiente" = "Ambiente %d";
+"mascara_trinca" = "Trinca %d";
+"mascara_parede_avulsa" = "Parede avulsa %d";
+"mascara_teto_avulso" = "Teto avulso %d";
+
+"texto_vazio" = "";
+"literal_cor_branco" = "Branco";
+"literal_cor_concreto" = "Concreto";
+"literal_cor_gelo" = "Gelo";
+"literal_cor_marfim" = "Marfim";
+"literal_cor_nenhum" = "Nenhum";
+"literal_cor_palha" = "Palha";
+"literal_cor_verniz" = "Verniz";
+
+"literal_tipo_acrilica" = "Acrílica";
+"literal_tipo_nenhum" = "Nenhum";
+"literal_tipo_pva" = "PVA";
+"literal_acabamento_brilhante" = "Brilhante";
+"literal_acabamento_fosco" = "Fosco";
+"literal_acabamento_semibrilho" = "Semi-brilho";
+"literal_acabamento_nenhum" = "Nenhum";
+"literal_cor_platina" = "Platina";
+"literal_tipo_esmalte_base_agua" = "Esmalte base água";
+"literal_tipo_incolor" = "Incolor";
+"literal_tipo_esmalte_sintetico" = "Esmalte sintético";
+"literal_acabamento_acetinado" = "Acetinado";
+"literal_interior_e_exterior" = "Interior\ne Exterior";
+"mascara_nao_pintarei" = "Não pintarei %@";
+"mascara_prazo_execucao_servico" = "Prazo de execução do serviço: %d dia(s)";
+"mascara_valor_servico" = "Valor do serviço: %@";
+"mascara_valor_servico_a_vista" = "Valor à vista -5%%: %@";
+"literal_eu_fornecerei_as_tintas" = "Eu fornecerei as tintas";
+"mascara_pintura_ambiente" = "Pintura %@";
+"mascara_titulo_popup_orcamento_confirmacao_descricao" = "Descreva o motivo pelo qual você está %s";
+
+"drawer_open" = "drawer_open";
+"drawer_close" = "drawer_close";
+"literal_descricao_forma_pagamento_com_entrada" = "15% agora + 85% no início do serviço";
+"literal_descricao_forma_pagamento_a_vista" = "Pagamento à vista";
+"literal_descricao_forma_pagamento_parcelado_2x" = "Em 2x (s/juros)";
+"literal_descricao_forma_pagamento_parcelado_3x" = "Em 3x (s/juros)";
+
+"literal_descricao_forma_pagamento_parcelado" = "Em até 3x (s/juros)";
+"mascara_ola_drawer" = "Olá, %1$s";
+"mascara_valor_total" = "Valor total: %@";
+"mascara_data_do_pedido" = "Data do pedido: %1$s";
+
+"mascara_inicio_servico" = "Início do serviço: %@";
+"mascara_dias_servico" = "%d dias";
+"mascara_valor_pedido_anterior" = "Valor pedido anterior: %@";
+"mascara_valor_ja_pago" = "Valor já pago: %@";
+"mascara_valor_novo_pedido" = "Valor novo pedido: %@";
+"mascara_diferenca_pagar" = "Diferença à pagar: %@";
+"mascara_diferenca_pagar_a_vista" = "Diferença à pagar à vista: %@";
+
+"mascara_altura" = "Altura: %@ m";
+"mascara_largura" = "Largura: %@ m";
+"mascara_comprimento" = "Comprimento: %@ m";
+"mascara_valor" = "Valor: R$ %@";
+
+"ajuda_passo_1"="1ª pintura: Ambientes novos que nunca receberam nenhum tipo de pintura.\n\nRepintura: Ambientes novos ou usados que já receberam uma ou mais pinturas.";
+"ajuda_passo_2"="Esta pergunta refere-se ao estado que o imóvel ou ambiente está e sua ocupação.\n\nSim: Selecione esta opção se o imóvel ou ambiente estiver totalmente desocupado de móveis, objetos e itens que necessitem proteção.\n\nNão: Selecione esta opção se o imóvel ou ambiente contém itens que necessitem proteção.";
+"ajuda_passo_3"="Esta pergunta identifica o estado em que a parede ou ambiente que irá receber a pintura encontra-se:\n\nGesso: superfície revestida com gesso liso em sua última camada.\n\nReboco: superfície de acabamento fino, liso e pouco áspero sem uma preparação para pintura. Selecionar também esta opção caso a parede esteja no emboço (acabamento áspero) e chapisco (argamassa rústica).\n\nMassa: superfície revestida com massa corrida ou acrílica. Selecionar também esta opção caso a parede esteja com massa fina.\n\nObs.: Caso não tenha certeza do estado da parede, selecione qualquer uma das opções que nosso profissional fará a confirmação no início do serviço.";
+"ajuda_passo_4"="Ambiente completo: Será considerado a pintura de 4 paredes + teto. Esta opção será usada em ambientes com dimensões proporcionais (quadrado ou retangular).\nCaso o espaço tenha paredes com medidas distintas, usar a opção “somente paredes”\n\nSomente paredes:  opção utilizada para paredes avulsas e/ou ambientes onde as medidas das paredes são diferentes.\n\nSomente teto: opção utilizada quando a pintura for efetuada apenas no teto.";
+"ajuda_passo_4_2"="Áreas secas (quartos, salas e escritórios)\nÁreas úmidas (área de serviço, banheiros e cozinha)\nSim: Selecione quando a parede/ambiente necessita de uma nova camada de massa corrida ou acrílica para um melhor acabamento.\nNão: Selecione quando não for necessário o serviço de emasseamento, limitando o serviço apenas à pintura.";
+"ajuda_passo_5"="Esta pergunta identifica eventuais trincas na parede ou ambiente, necessitando reparo.";
+
+"literal_teto_avulso" = "Teto Avulso";
+"literal_ambiente_completo" = "Ambiente Completo";
+"literal_parede_avulsa" = "Parede Avulsa";
+"literal_cor" = "Cor";
+"literal_duplicar" = "Duplicar";
+"literal_adicionar" = "Adicionar";
+"literal_excluir" = "Excluir";
+
+
+"mensagem_tinta_premium" = "As tintas fornecidas para pintura devem ser de categoria premium para assegurar a garantia do trabalho";
+"mensagem_nao_somos_revendedores_tinta" = "Não somos revendedores de tinta, as mesmas são fornecidas apenas para execução do serviço (Nota Fiscal de Serviço)";
