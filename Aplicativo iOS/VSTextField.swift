@@ -22,30 +22,6 @@
 //  THE SOFTWARE.
 
 import UIKit
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
 
 enum TextFieldFormatting {
     case socialSecurityNumber
@@ -87,15 +63,15 @@ class VSTextField: UITextField {
     var formatting : TextFieldFormatting = .noFormatting {
         didSet {
             switch formatting {
-            
+                
             case .socialSecurityNumber:
                 self.formattingPattern = "***-**–****"
                 self.replacementChar = "*"
-            
+                
             case .phoneNumber:
                 self.formattingPattern = "***-***–****"
                 self.replacementChar = "*"
-            
+                
             default:
                 self.maxLength = 0
             }
@@ -133,7 +109,14 @@ class VSTextField: UITextField {
         }
         
         get {
-            return formatting == .noFormatting ? super.text : finalStringWithoutFormatting
+            if case .noFormatting = formatting {
+                return super.text
+            } else {
+                // Because the UIControl target action is called before NSNotificaion (from which we fire our custom formatting), we need to 
+                // force update finalStringWithoutFormatting to get the latest text. Otherwise, the last character would be missing.
+                textDidChange()
+                return finalStringWithoutFormatting
+            }
         }
     }
     
@@ -203,43 +186,27 @@ class VSTextField: UITextField {
             var tempIndex = tempString.startIndex
             
             while !stop {
-                
-//                let formattingPatternRange = formatterIndex ..< <#T##Collection corresponding to `formatterIndex`##Collection#>.index(formatterIndex, offsetBy: 1)
+                let formattingPatternRange = formatterIndex ..< formattingPattern.index(formatterIndex, offsetBy: 1)
                 
                 if formattingPattern.substring(with: formattingPatternRange) != String(replacementChar) {
                     finalText = finalText + formattingPattern.substring(with: formattingPatternRange)
                     finalSecureText = finalSecureText + formattingPattern.substring(with: formattingPatternRange)
                 } else if tempString.characters.count > 0 {
-                    
-                    let pureStringRange = tempIndex.index(tempIndex.startIndex, offsetBy: 1)
-                    
-                    //let pureStringRange = tempIndex ..< <#T##Collection corresponding to `tempIndex`##Collection#>.index(tempIndex, offsetBy: 1)
+                    let pureStringRange = tempIndex ..< tempString.index(tempIndex, offsetBy: 1)
                     
                     finalText = finalText + tempString.substring(with: pureStringRange)
                     
                     // we want the last number to be visible
-                    if tempIndex.index(tempIndex.startIndex, offsetBy: 1) == tempString.endIndex {
-                        finalSecureText = finalSecureText + tempString.substring(to: pureStringRange)
-                    }
-                    else
-                    {
+                    if tempString.index(tempIndex, offsetBy: 1) == tempString.endIndex {
+                        finalSecureText = finalSecureText + tempString.substring(with: pureStringRange)
+                    } else {
                         finalSecureText = finalSecureText + String(secureTextReplacementChar)
                     }
                     
-                    tempIndex = tempIndex.index(after: tempIndex)
-                    
-//                    if <#T##Collection corresponding to `tempIndex`##Collection#>.index(tempIndex, offsetBy: 1) == tempString.endIndex {
-//                        finalSecureText = finalSecureText + tempString.substring(with: pureStringRange)
-//                    } else {
-//                        finalSecureText = finalSecureText + String(secureTextReplacementChar)
-//                    }
-                    
-                    //tempIndex = <#T##Collection corresponding to `tempIndex`##Collection#>.index(after: tempIndex)
+                    tempIndex = tempString.index(after: tempIndex)
                 }
                 
-                formatterIndex = formatterIndex.index(after: formatterIndex)
-                
-                //formatterIndex = <#T##Collection corresponding to `formatterIndex`##Collection#>.index(after: formatterIndex)
+                formatterIndex = formattingPattern.index(after: formatterIndex)
                 
                 if formatterIndex >= formattingPattern.endIndex || tempIndex >= tempString.endIndex {
                     stop = true
@@ -259,3 +226,28 @@ class VSTextField: UITextField {
         }
     }
 }
+
+
+// Helpers
+
+fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
+}
+
+fileprivate func > <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l > r
+    default:
+        return rhs < lhs
+    }
+}
+
+

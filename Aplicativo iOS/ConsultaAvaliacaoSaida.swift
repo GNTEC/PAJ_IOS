@@ -14,11 +14,11 @@ class ConsultaAvaliacaoSaida : Mappable {
     var resultado: Resultado?
     var avaliacao: Avaliacao?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
 
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         resultado <- map["resultado"]
         avaliacao <- map["avaliacao"]
     }

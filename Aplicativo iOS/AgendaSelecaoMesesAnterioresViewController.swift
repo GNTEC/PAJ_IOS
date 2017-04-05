@@ -60,7 +60,7 @@ class AgendaSelecaoMesesAnterioresViewController : UIViewController {
             botao?.titleLabel?.textAlignment = NSTextAlignment.center;
             botao?.titleLabel?.textColor = corCinzaFundoBullet()
             botao?.titleLabel?.numberOfLines = 2;
-            botao.setTitle(dataFormatada.uppercased(), for: UIControlState())
+            botao?.setTitle(dataFormatada.uppercased(), for: UIControlState())
             
             data = (calendario as NSCalendar).date(byAdding: componente_data, to: data!, options: NSCalendar.Options(rawValue: 0))
             

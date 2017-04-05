@@ -21,12 +21,12 @@ class Produto : Mappable {
     var valor_total: Float?
     var valor_unitario: String?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         id = 0
         quantidade = 0
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         id <- map["id"]
         quantidade <- map["quantidade"]
         nome <- map["nome"]

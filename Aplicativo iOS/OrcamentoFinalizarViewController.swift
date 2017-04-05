@@ -264,29 +264,28 @@ class OrcamentoFinalizarViewController : UIViewController {
         
         let api = PinturaAJatoApi()
         
-        let parametros: [String:AnyObject] = [
-            "id_franquia" : "\(PinturaAJatoApi.obtemFranqueado()!.id_franquia)" as AnyObject,
-            "id_sessao": PinturaAJatoApi.obtemIdSessao() as AnyObject,
-            "id_orcamento" : "\(contexto!.id_orcamento)" as AnyObject,
-            "id_cliente" : "\(contexto!.id_cliente!)" as AnyObject,
-            "valor" : Valor.floatParaStringValor(contexto!.valorDebito) as AnyObject,
-            "cartao" : contexto!.cartao! as AnyObject,
-            "cvv" : contexto!.cvv! as AnyObject,
-            "mes" : contexto!.mes! as AnyObject,
-            "ano" : "20" + contexto!.ano! as AnyObject,
-            "nome" : contexto!.nome! as AnyObject,
-            "tipo_pagamento": contexto!.tipoPagamento == TipoPagamento.AVista ? "SGL" as AnyObject : "ISS" as AnyObject,
-            "parcelas" : "\(contexto!.parcelas!)" as AnyObject,
-            "descricao" : contexto!.descricao! as AnyObject,
-            "forma_de_pagamento" : contexto!.tipoPagamento!.rawValue as AnyObject,
-            "meio_de_pagamento" : TipoMeioPagamento.CartaoCredito.rawValue as AnyObject,
-            "numero_parcelas" : "\(contexto!.parcelas!)" as AnyObject,
-            "valor_parcelas" : Valor.floatParaStringValor(contexto!.valorParcela) as AnyObject,
-            "status_pagamento" : contexto!.tipoPagamento == TipoPagamento.ComEntrada ? "2" as AnyObject : "1" as AnyObject,
-            "valor_bruto" : Valor.floatParaStringValor(contexto!.valorPagamento) as AnyObject,
-            "valor_residual" : contexto!.tipoPagamento == TipoPagamento.ComEntrada ? Valor.floatParaStringValor(contexto!.valorPagamento - contexto!.valorDebito) : "",
-            "dias_servico" : "\(contexto!.diasServico)" as AnyObject
-        ]
+        var parametros = [String:AnyObject]()
+        parametros["id_franquia"] = "\(PinturaAJatoApi.obtemFranqueado()!.id_franquia)" as AnyObject
+        parametros["id_sessao"] = PinturaAJatoApi.obtemIdSessao() as AnyObject
+        parametros["id_orcamento"] = "\(contexto!.id_orcamento)" as AnyObject
+        parametros["id_cliente"] = "\(contexto!.id_cliente!)" as AnyObject
+        parametros["valor"] = Valor.floatParaStringValor(contexto!.valorDebito) as AnyObject
+        parametros["cartao"] = contexto!.cartao! as AnyObject
+        parametros["cvv"] = contexto!.cvv! as AnyObject
+        parametros["mes"] = contexto!.mes! as AnyObject
+        parametros["ano"] = "20" + contexto!.ano! as AnyObject
+        parametros["nome"] = contexto!.nome! as AnyObject
+        parametros["tipo_pagamento"] = contexto!.tipoPagamento == TipoPagamento.AVista ? "SGL" as AnyObject : "ISS" as AnyObject
+        parametros["parcelas"] = "\(contexto!.parcelas!)" as AnyObject
+        parametros["descricao"] = contexto!.descricao! as AnyObject
+        parametros["forma_de_pagamento"] = contexto!.tipoPagamento!.rawValue as AnyObject
+        parametros["meio_de_pagamento"] = TipoMeioPagamento.CartaoCredito.rawValue as AnyObject
+        parametros["numero_parcelas"] = "\(contexto!.parcelas!)" as AnyObject
+        parametros["valor_parcelas"] = Valor.floatParaStringValor(contexto!.valorParcela) as AnyObject
+        parametros["status_pagamento"] =  contexto!.tipoPagamento == TipoPagamento.ComEntrada ? "2" as AnyObject : "1" as AnyObject
+        parametros["valor_bruto"] = Valor.floatParaStringValor(contexto!.valorPagamento) as AnyObject
+        parametros["valor_residual"] = (contexto!.tipoPagamento == TipoPagamento.ComEntrada ? Valor.floatParaStringValor(contexto!.valorPagamento - contexto!.valorDebito) : "") as AnyObject
+        parametros["dias_servico"] = "\(contexto!.diasServico)" as AnyObject
         
         api.getNet(self.navigationController!.view, tipo: "pagamento", parametros: parametros, sucesso: { (objeto: PedidoGetNet?, resultado: Resultado?) -> Bool in
             

@@ -60,10 +60,10 @@ class AgendaEventoViewController: UIViewController {
             "descricao" : "Bloqueado pelo Franqueado \(PinturaAJatoApi.obtemFranqueado()!.id_franquia)" as AnyObject,
             "id_orcamento" : "0" as AnyObject,
             "id_equipe" : "1" as AnyObject,
-            "tipo" : "\(TipoDataCalendario.diaBloqueadoFranqueado.rawValue)",
-            "status" : "\(TipoDataCalendario.diaBloqueadoFranqueado.rawValue)",
-            "id_franquia" : String.init(format:"%d", PinturaAJatoApi.obtemFranqueado()!.id_franquia),
-            "id_sessao": PinturaAJatoApi.obtemIdSessao()
+            "tipo" : "\(TipoDataCalendario.diaBloqueadoFranqueado.rawValue)" as AnyObject,
+            "status" : "\(TipoDataCalendario.diaBloqueadoFranqueado.rawValue)" as AnyObject,
+            "id_franquia" : String.init(format:"%d", PinturaAJatoApi.obtemFranqueado()!.id_franquia) as AnyObject,
+            "id_sessao": PinturaAJatoApi.obtemIdSessao() as AnyObject
         ]
         
         api.incluirAgendaBloqueio(self.navigationController!.view, parametros: parametros, sucesso: { (objeto: Resultado?) -> Bool in

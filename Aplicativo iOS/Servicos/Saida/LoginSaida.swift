@@ -15,11 +15,11 @@ class LoginSaida : Mappable {
     var franqueado: Franqueado?
     var sessao: Sessao?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         resultado    <- map["resultado"]
         franqueado   <- map["franqueado"]
         sessao       <- map["sessao"]

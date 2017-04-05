@@ -14,11 +14,11 @@ class BuscaAgendaOrcamentoSaida : Mappable {
     var resultado: Resultado?
     var agenda: [ItemHistoricoCalendario]?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         resultado <- map["resultado"]
         agenda    <- map["agenda"]
 

@@ -31,7 +31,7 @@ class Validacoes {
     // Calculo do 1o. Digito Verificador
         sm = 0;
         peso = 10;
-        for (i=0; i<9; i+=1) {
+        for i in 0..<9 {
     
             // converte o i-esimo caractere do CPF em um numero:
             // por exemplo, transforma o caractere '0' no inteiro 0
@@ -54,7 +54,7 @@ class Validacoes {
         // Calculo do 2o. Digito Verificador
         sm = 0;
         peso = 11;
-        for(i=0; i<10; i+=1) {
+        for i in 0..<10 {
     
             let c = CPF[CPF.characters.index(CPF.startIndex, offsetBy: i)...CPF.characters.index(CPF.startIndex, offsetBy: i+1)]
 

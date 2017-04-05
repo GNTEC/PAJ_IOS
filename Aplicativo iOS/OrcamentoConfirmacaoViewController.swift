@@ -75,7 +75,7 @@ class OrcamentoConfirmacaoViewController : UITableViewController, NotificaOrcame
             
             if contexto?.id_orcamento_inicial != nil {
 
-                Registro.registraInformacao("id_orcamento_inicial", valor: contexto!.id_orcamento_inicial)
+                Registro.registraInformacao("id_orcamento_inicial", valor: contexto!.id_orcamento_inicial as AnyObject?)
                 
                 let api = PinturaAJatoApi()
                 
@@ -125,7 +125,7 @@ class OrcamentoConfirmacaoViewController : UITableViewController, NotificaOrcame
     
     func processaOrcamento() {
         
-        Registro.registraInformacao("id_cliente", valor: contexto!.id_cliente)
+        Registro.registraInformacao("id_cliente", valor: contexto!.id_cliente as AnyObject?)
 
         let api = PinturaAJatoApi()
         
@@ -543,10 +543,10 @@ class OrcamentoConfirmacaoViewController : UITableViewController, NotificaOrcame
             //var tipoPagamento: TipoPagamento?
             //var numero_parcelas = 1
             
-            jsonObject!["forma_de_pagamento"] = (escolhaPagamento.formaPagamento.rawValue)
-            jsonObject!["meio_de_pagamento"] = (escolhaPagamento.meioPagamento.rawValue)
-            jsonObject!["numero_parcelas"] = (escolhaPagamento.parcelas)
-            jsonObject!["status_pagamento"] = "0"
+            jsonObject!["forma_de_pagamento"] = (escolhaPagamento.formaPagamento.rawValue as AnyObject?)
+            jsonObject!["meio_de_pagamento"] = (escolhaPagamento.meioPagamento.rawValue as AnyObject?)
+            jsonObject!["numero_parcelas"] = (escolhaPagamento.parcelas as AnyObject?)
+            jsonObject!["status_pagamento"] = "0" as AnyObject?
             
         //}
         //catch {
@@ -580,7 +580,7 @@ class OrcamentoConfirmacaoViewController : UITableViewController, NotificaOrcame
         
         if self.contexto?.id_orcamento_editar != nil {
             
-            jsonObject!["id_orcamento"] = self.contexto!.id_orcamento_editar!
+            jsonObject!["id_orcamento"] = self.contexto!.id_orcamento_editar! as AnyObject?
             
             api.editarOrcamentoApp(self.navigationController!.view, parametros: jsonObject!, sucesso: sucesso )
         }
@@ -635,9 +635,9 @@ class OrcamentoConfirmacaoViewController : UITableViewController, NotificaOrcame
             "id_cliente" : "\(contexto!.id_cliente)" as AnyObject,
             "descricao" : String(format: "Pgto. do orçamento: %d", contexto!.id_orcamento_inicial!) as AnyObject,
             "valor_parcelas" : "0.0" as AnyObject,
-            "status_pagamento" : "1",
-            "valor_bruto" : "\(valorNovo)",
-            "valor_residual" : "0.0"
+            "status_pagamento" : "1" as AnyObject,
+            "valor_bruto" : "\(valorNovo)" as AnyObject,
+            "valor_residual" : "0.0" as AnyObject
         ]
         
         api.pagamento(self.navigationController!.view, tipo: "dinheiro", parametros: parametros, sucesso: { (resultado: Resultado?) -> Bool in

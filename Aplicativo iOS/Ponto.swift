@@ -22,13 +22,13 @@ class Ponto : Mappable {
     var precisao: String?
     var atualizacao: String?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         id = 0
         id_franquia = 0
         id_orcamento = 0
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
     
         id <- map["id"]
         id_franquia <- map["id_franquia"]

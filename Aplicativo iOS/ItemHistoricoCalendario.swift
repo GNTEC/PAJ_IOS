@@ -32,7 +32,7 @@ class ItemHistoricoCalendario : Mappable {
         sequencia = 0        
     }
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         id = 0
         id_franquia = 0
         id_orcamento = 0
@@ -40,7 +40,7 @@ class ItemHistoricoCalendario : Mappable {
         sequencia = 0
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         id    <- map["id"]
         id_franquia    <- map["id_franquia"]
         id_orcamento    <- map["id_orcamento"]

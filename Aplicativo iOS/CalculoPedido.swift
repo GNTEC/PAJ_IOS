@@ -14,10 +14,10 @@ class CalculoPedido : Mappable {
     var produtos: [Produto]?
     var valor_total: Float?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         
         produtos <- map["produtos"]
         valor_total <- map["valor_total"]

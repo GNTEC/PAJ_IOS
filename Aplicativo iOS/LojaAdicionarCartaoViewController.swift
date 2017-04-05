@@ -77,8 +77,8 @@ class LojaAdicionarCartaoViewController: UIViewController {
             "nome" : edit_nome_portador.text! as AnyObject,
             "numero" : numero as AnyObject,
             "validade" : edit_validade.text! as AnyObject,
-            "bandeira" : tipo == "4" ? "visa" : "mastercard" as AnyObject,
-            "cvv" : edit_cvv.text!
+            "bandeira" : (tipo == "4" ? "visa" : "mastercard") as AnyObject,
+            "cvv" : edit_cvv.text! as AnyObject
         ]
         
         api.incluirCartao(self.navigationController!.view, parametros: parametros, sucesso: { (objeto:Resultado?) -> Bool in

@@ -25,7 +25,7 @@ class OrcamentoItemPintura : Mappable {
     
     var item_pintura_valor: Float?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
         id = 0
         id_orcamento_item = 0
@@ -34,7 +34,7 @@ class OrcamentoItemPintura : Mappable {
         fornecer_tintas = 0
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         id <- map["id"]
         id_orcamento_item <- map["id_orcamento_item"]
         id_orcamento_item_pintura <- map["id_orcamento_item_pintura"]

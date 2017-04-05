@@ -17,11 +17,11 @@ class ConsultaRecebimentosSaida: Mappable {
     var receber: [Recebimento]?
     var cancelado: [Recebimento]?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         resultado <- map["resultado"]
 
         recebido <- map["recebido"]

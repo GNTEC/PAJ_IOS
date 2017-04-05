@@ -14,11 +14,11 @@ class LojaListaPedidosSaida : Mappable {
     var resultado: Resultado?
     var pedidos: [PedidoLoja]?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         resultado    <- map["resultado"]
         pedidos  <- map["pedidos"]
     }

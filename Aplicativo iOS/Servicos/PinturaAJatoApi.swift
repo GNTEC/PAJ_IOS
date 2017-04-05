@@ -78,42 +78,34 @@ class PinturaAJatoApi {
         exibeProcessando(view)
         
     
-        Alamofire.request(urlBase + "lembrarSenha", method: .post, parameters: parametros, encoding: JSONEncoding.default, headers: nil).responseJSON { (resposta:DataResponse<Any>) in
+        Alamofire.request(URL(string: urlBase + "lembrarSenha")!, method: .post, parameters: parametros, encoding: JSONEncoding.default, headers: nil).responseObject { (resposta: DataResponse<BaseSaida>) in
             
             self.escondeProcessando(view)
             
-            switch(resposta.result.error.result) {
+            switch(resposta.result) {
             case .success(_):
-                
-                if let data = resposta.result.error.result.value{
-                    print(resposta.result.error.result.value)
-                    
-                    
-                    let saida = resposta.result.value
-                    
-                    if (saida? as AnyObject).resultado != nil && saida?.resultado?.erro == false {
-                        
-                        sucesso(resultado: saida?.resultado)
+                if let saida = resposta.result.value {
+                    if saida.resultado?.erro == false {
+                        sucesso(saida.resultado)
+                    } else {
+                        AvisoProcessamento.mensagemErroGenerico(saida.resultado?.mensagem)
                     }
-                    else {
-                        AvisoProcessamento.mensagemErroGenerico(saida?.resultado?.mensagem)
-                    }
-                    
                 }
                 return
                 
             case .failure(_):
-                print(resposta.result.error.result.error)
+                print(resposta.result.error as? NSError)
                 
-                self.trataErroGenerico(resposta.result.error)
+                self.trataErroGenerico(resposta.result.error as NSError?)
                 return
                 
             }
         }
-        
-//        Alamofire.request(.POST, urlBase + "lembrarSenha", parameters: parametros)
+    }
+    
+//        Alamofire.request(.POST, URL(string: urlBase + "lembrarSenha", parameters: parametros)
 //            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-//                print(resposta.request?.URLString)
+//                print(resposta.request?.url?.absoluteString)
 //                print(resposta)
 //            })
 //            .responseObject { (resposta: Response<BaseSaida, NSError>)  in
@@ -122,7 +114,7 @@ class PinturaAJatoApi {
 //                
 //                if resposta.result.error != nil {
 //                    
-//                    self.trataErroGenerico(resposta.result.error)
+//                    self.trataErroGenerico(resposta.result.error as? NSError)
 //                    
 //                    return
 //                }
@@ -143,19 +135,18 @@ class PinturaAJatoApi {
     func validarUsuario(_ view: UIView, parametros: [String : AnyObject], sucesso: @escaping (_ objeto:Franqueado?, _ sessao: Sessao?, _ resultado:Bool) -> Bool) {
        
         exibeProcessando(view)
-        
-        Alamofire.request(.POST, urlBase + "validarUsuario", parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "validarUsuario")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<LoginSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<LoginSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
@@ -164,7 +155,7 @@ class PinturaAJatoApi {
      
                 if login?.resultado?.erro == false {
                     
-                    sucesso(objeto: login?.franqueado, sessao: login?.sessao, resultado: (login?.resultado?.erro)!)
+                    sucesso(login?.franqueado, login?.sessao, (login?.resultado?.erro)!)
                 }
                 else {
                     AvisoProcessamento.mensagemErroGenerico(login?.resultado?.mensagem)
@@ -177,18 +168,18 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "buscarOrcamentosCompletosPorFranquia", parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "buscarOrcamentosCompletosPorFranquia")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<HistoricoSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<HistoricoSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
@@ -197,7 +188,7 @@ class PinturaAJatoApi {
                 
                 if login?.resultado?.erro == false {
                     
-                    sucesso(objeto: login?.orcamento, resultado: (login?.resultado?.erro)!)
+                    sucesso(login?.orcamento, (login?.resultado?.erro)!)
                 }
                 
                 
@@ -208,18 +199,18 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "buscarAgendaPorFranquia", parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "buscarAgendaPorFranquia")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<BuscaAgendaOrcamentoSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<BuscaAgendaOrcamentoSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
@@ -228,7 +219,7 @@ class PinturaAJatoApi {
                 
                 if saida?.resultado?.erro == false {
                     
-                    sucesso(objeto: saida?.agenda, resultado: (saida?.resultado?.erro)!)
+                    sucesso(saida?.agenda, (saida?.resultado?.erro)!)
                 }
                 
                 
@@ -238,19 +229,18 @@ class PinturaAJatoApi {
     func avaliacao(_ view:UIView, tipo: String, parametros: [String:AnyObject], sucesso: @escaping (_ objeto:Avaliacao?, _ tipo: String, _ resultado:Bool) -> Bool ) {
         
         exibeProcessando(view)
-        
-        Alamofire.request(.POST, urlBase + "avaliacao/" + tipo , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "avaliacao/" + tipo)!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<ConsultaAvaliacaoSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<ConsultaAvaliacaoSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
@@ -259,7 +249,7 @@ class PinturaAJatoApi {
                 
                 if saida?.resultado?.erro == false {
                     
-                    sucesso(objeto: saida?.avaliacao, tipo:tipo, resultado: (saida?.resultado?.erro)!)
+                    sucesso(saida?.avaliacao, tipo, (saida?.resultado?.erro)!)
                 }
                 
                 
@@ -270,25 +260,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "incluirAgendaBloqueio" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "incluirAgendaBloqueio")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<BaseSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<BaseSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: BaseSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.resultado)
+                sucesso(saida?.resultado)
         }
     }
     
@@ -296,18 +286,18 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "financeiro/" + tipo , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "financeiro/" + tipo)!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<ConsultaRecebimentosSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<ConsultaRecebimentosSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
@@ -328,7 +318,7 @@ class PinturaAJatoApi {
                         itens = saida?.cancelado
                     }
                     
-                    sucesso(objeto: itens, tipo:tipo, resultado: (saida?.resultado?.erro)!)
+                    sucesso(itens, tipo, (saida?.resultado?.erro)!)
                 }
                 
                 
@@ -339,18 +329,18 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "financeiro/" + tipo + "/detalhe" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "financeiro/" + tipo + "/detalhe")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<ConsultaRecebimentoDetalheSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<ConsultaRecebimentoDetalheSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
@@ -371,7 +361,7 @@ class PinturaAJatoApi {
                         itens = saida?.cancelado
                     }
                     
-                    sucesso(objeto: itens, tipo:tipo, resultado: (saida?.resultado?.erro)!)
+                    sucesso(itens, tipo, (saida?.resultado?.erro)!)
                 }
                 
                 
@@ -382,25 +372,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "trocarSenhaApp" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "trocarSenhaApp")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<BaseSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<BaseSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: BaseSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.resultado)
+                sucesso(saida?.resultado)
         }
     }
     
@@ -408,25 +398,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "buscarManuaisETreinamentos" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "buscarManuaisETreinamentos")!, method: .post,  parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<ConsultaManuaisTreinamentosSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<ConsultaManuaisTreinamentosSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: ConsultaManuaisTreinamentosSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.manual, falha: (saida?.resultado!.erro)!)
+                sucesso(saida?.manual, (saida?.resultado!.erro)!)
         }
     }
     
@@ -434,25 +424,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "buscarCartoesPorFranquia" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "buscarCartoesPorFranquia")!, method: .post,  parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<ConsultaCartoesSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<ConsultaCartoesSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: ConsultaCartoesSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.cartoes, falha: (saida?.resultado!.erro)!)
+                sucesso(saida?.cartoes, (saida?.resultado!.erro)!)
         }
     }
     
@@ -460,25 +450,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "incluirCartao" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "incluirCartao")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<BaseSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<BaseSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: BaseSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.resultado)
+                sucesso(saida?.resultado)
         }
     }
     
@@ -486,18 +476,18 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "buscarProdutos" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "buscarProdutos")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<ConsultaProdutosSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<ConsultaProdutosSaida>)  in
                 
                 self.escondeProcessando(view)
 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
@@ -505,7 +495,7 @@ class PinturaAJatoApi {
                 
                 let saida: ConsultaProdutosSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.produtos, falha: (saida?.resultado!.erro)!)
+                sucesso(saida?.produtos, (saida?.resultado!.erro)!)
         }
     }
     
@@ -520,35 +510,35 @@ class PinturaAJatoApi {
             formato = parametros?["formato"] as! String,
             antes_depois = parametros?["antes_depois"] as! String
         
-        Alamofire.upload(.POST,
-                         urlBase + "inserirFoto" ,
-                         multipartFormData: { multipartFormData in
-                            multipartFormData.appendBodyPart(data: id_franquia.dataUsingEncoding(NSUTF8StringEncoding)!, name: "id_franquia")
-                            multipartFormData.appendBodyPart(data: id_sessao.dataUsingEncoding(NSUTF8StringEncoding)!, name: "id_sessao")
-                            multipartFormData.appendBodyPart(data: id_sequencia.dataUsingEncoding(NSUTF8StringEncoding)!, name: "id_sequencia")
-                            multipartFormData.appendBodyPart(data: formato.dataUsingEncoding(NSUTF8StringEncoding)!, name: "formato")
-                            multipartFormData.appendBodyPart(data: id_orcamento.dataUsingEncoding(NSUTF8StringEncoding)!, name: "id_orcamento")
-                            multipartFormData.appendBodyPart(data: antes_depois.dataUsingEncoding(NSUTF8StringEncoding)!, name: "antes_depois")
-                            multipartFormData.appendBodyPart(data: UIImageJPEGRepresentation(foto_pequena!, 1.0)!, name: "fotop", fileName: "fotop.jpg", mimeType: "image/jpeg")
-                            multipartFormData.appendBodyPart(data: UIImageJPEGRepresentation(foto_grande!, 1.0)!, name: "fotog", fileName: "fotog.jpg", mimeType: "image/jpeg")
-            },
-                         encodingCompletion: { encodingResult in
-                            
-                            
-                            switch encodingResult {
-                            case .Success(let upload, _, _):
-                                upload.responseString { response in
-                                    self.escondeProcessando(view)
-                                    debugPrint(response)
-                                    sucesso(resultado: true, mensagem: response.result.value)
-                                }
-                            case .Failure(let encodingError):
-                                self.escondeProcessando(view)
-                                debugPrint(encodingError)
-                                sucesso(resultado: false, mensagem: nil/*encodingError*/)
-                            }
+        
+        do {
+            let url = try URLRequest(url: "\(urlBase)inserirFoto", method: .post)
+            Alamofire.upload(multipartFormData: { (multipartFormData) in
+                multipartFormData.append(id_franquia.data(using: String.Encoding.utf8)!, withName: "id_franquia")
+                multipartFormData.append(id_sessao.data(using: String.Encoding.utf8)!, withName: "id_sessao")
+                multipartFormData.append(id_sequencia.data(using: String.Encoding.utf8)!, withName: "id_sequencia")
+                multipartFormData.append(formato.data(using: String.Encoding.utf8)!, withName: "formato")
+                multipartFormData.append(id_orcamento.data(using: String.Encoding.utf8)!, withName: "id_orcamento")
+                multipartFormData.append(antes_depois.data(using: String.Encoding.utf8)!, withName: "antes_depois")
+                multipartFormData.append(UIImageJPEGRepresentation(foto_pequena!, 1.0)!, withName: "fotop", fileName: "fotop.jpg", mimeType: "image/jpeg")
+                multipartFormData.append(UIImageJPEGRepresentation(foto_grande!, 1.0)!, withName: "fotog", fileName: "fotog.jpg", mimeType: "image/jpeg")
+            }, with: url) { (encodingResult) in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseString { response in
+                        self.escondeProcessando(view)
+                        debugPrint(response)
+                        sucesso(true, response.result.value)
+                    }
+                case .failure(let encodingError):
+                    self.escondeProcessando(view)
+                    debugPrint(encodingError)
+                    sucesso(false, nil/*encodingError*/)
+                }
             }
-        )
+        } catch {
+            
+        }
     }
     
     func inserirFotoUsuario(_ view:UIView, parametros: [String:AnyObject]?, foto:UIImage?, sucesso: @escaping (_ resultado:Bool, _ mensagem: String?) -> Bool) {
@@ -560,57 +550,57 @@ class PinturaAJatoApi {
             id_usuario = parametros?["id_usuario"] as! String,
             formato = parametros?["formato"] as! String
         
-        Alamofire.upload(.POST,
-            urlBase + "inserirFotoUsuario" ,
-            multipartFormData: { multipartFormData in
-                multipartFormData.appendBodyPart(data: id_franquia.dataUsingEncoding(NSUTF8StringEncoding)!, name: "id_franquia")
-                multipartFormData.appendBodyPart(data: id_sessao.dataUsingEncoding(NSUTF8StringEncoding)!, name: "id_sessao")
-                multipartFormData.appendBodyPart(data: id_usuario.dataUsingEncoding(NSUTF8StringEncoding)!, name: "id_usuario")
-                multipartFormData.appendBodyPart(data: formato.dataUsingEncoding(NSUTF8StringEncoding)!, name: "formato")
-                multipartFormData.appendBodyPart(data: UIImageJPEGRepresentation(foto!, 1.0)!, name: "foto", fileName: "foto.jpg", mimeType: "image/jpeg")
-            },
-            encodingCompletion: { encodingResult in
-                
-                
-                switch encodingResult {
-                case .Success(let upload, _, _):
-                    upload.responseString { response in
+        do {
+            let url = try URLRequest(url: URL(string: urlBase + "inserirFotoUsuario")!, method: .post)
+            Alamofire.upload(multipartFormData: { multipartFormData in
+                    multipartFormData.append(id_franquia.data(using: String.Encoding.utf8)!, withName: "id_franquia")
+                    multipartFormData.append(id_sessao.data(using: String.Encoding.utf8)!, withName: "id_sessao")
+                    multipartFormData.append(id_usuario.data(using: String.Encoding.utf8)!, withName: "id_usuario")
+                    multipartFormData.append(formato.data(using: String.Encoding.utf8)!, withName: "formato")
+                    multipartFormData.append(UIImageJPEGRepresentation(foto!, 1.0)!, withName: "foto", fileName: "foto.jpg", mimeType: "image/jpeg")
+            }, with: url) { encodingResult in
+
+                    switch encodingResult {
+                    case .success(let upload, _, _):
+                        upload.responseString { response in
+                            self.escondeProcessando(view)
+                            debugPrint(response)
+                            sucesso(true, response.result.value)
+                        }
+                    case .failure(let encodingError):
                         self.escondeProcessando(view)
-                        debugPrint(response)
-                        sucesso(resultado: true, mensagem: response.result.value)
+                        debugPrint(encodingError)
+                        sucesso(false, nil/*encodingError*/)
                     }
-                case .Failure(let encodingError):
-                    self.escondeProcessando(view)
-                    debugPrint(encodingError)
-                    sucesso(resultado: false, mensagem: nil/*encodingError*/)
                 }
-            }
-        )
+        } catch {
+            
+        }
     }
 
     func buscarOrcamentoPorId(_ view: UIView, parametros: [String:AnyObject]?, sucesso: @escaping (_ objeto:OrcamentoConsultaSaida?, _ falha:Bool) -> Bool) {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "buscarOrcamentoPorId" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "buscarOrcamentoPorId")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<OrcamentoConsultaSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<OrcamentoConsultaSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: OrcamentoConsultaSaida? = resposta.result.value
                 
-                sucesso(objeto: saida, falha: (saida?.resultado!.erro)!)
+                sucesso(saida, (saida?.resultado!.erro)!)
         }
     }
     
@@ -618,25 +608,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "pagamento/" + tipo , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "pagamento/" + tipo)!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<BaseSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<BaseSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: BaseSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.resultado)
+                sucesso(saida?.resultado)
         }
     }
     
@@ -644,51 +634,50 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "email/" + tipo , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "email/" + tipo)!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<EmailOrcamentoSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<EmailOrcamentoSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: EmailOrcamentoSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.cliente, resultado:  saida?.resultado)
+                sucesso(saida?.cliente, saida?.resultado)
         }
     }
     
     func editarOrcamentoApp(_ view: UIView, parametros: [String: AnyObject], sucesso: @escaping (_ objeto: OrcamentoGerado?, _ resultado: Bool) -> Bool) {
         
         exibeProcessando(view)
-        
-        Alamofire.request(.POST, urlBase + "editarOrcamentoApp", parameters: parametros, encoding: .JSON)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "editarOrcamentoApp")!, method: .post, parameters: parametros, encoding: JSONEncoding.default, headers: nil)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<OrcamentoConsultaSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<OrcamentoConsultaSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: OrcamentoConsultaSaida? = resposta.result.value
                 
-                sucesso(objeto:saida?.orcamento, resultado: (saida?.resultado!.erro)!)
+                sucesso(saida?.orcamento, (saida?.resultado!.erro)!)
         }
     }
 
@@ -697,26 +686,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "incluirOrcamento", parameters: parametros, encoding: .JSON)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
-                print(NSString.init(data:resposta.request!.HTTPBody!, encoding:NSUTF8StringEncoding))
+        Alamofire.request(URL(string: urlBase + "incluirOrcamento")!, method: .post, parameters: parametros, encoding: JSONEncoding.default)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<OrcamentoConsultaSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<OrcamentoConsultaSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: OrcamentoConsultaSaida? = resposta.result.value
                 
-                sucesso(objeto:saida?.orcamento, resultado: (saida?.resultado!.erro)!)
+                sucesso(saida?.orcamento, (saida?.resultado!.erro)!)
         }
     }
 
@@ -724,26 +712,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "orcamento/calculoApp", parameters: parametros, encoding: .JSON)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
-                print(NSString.init(data:resposta.request!.HTTPBody!, encoding:NSUTF8StringEncoding))                
+        Alamofire.request(URL(string: urlBase + "orcamento/calculoApp")!, method: .post, parameters: parametros, encoding: JSONEncoding.default)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<OrcamentoConsultaSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<OrcamentoConsultaSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: OrcamentoConsultaSaida? = resposta.result.value
                 
-                sucesso(objeto:saida?.orcamento, resultado: saida?.resultado)
+                sucesso(saida?.orcamento, saida?.resultado)
         }
     }
     
@@ -751,25 +738,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "orcamento/" + tipo , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "orcamento/" + tipo)!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<BaseSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<BaseSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: BaseSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.resultado)
+                sucesso(saida?.resultado)
         }
     }
     
@@ -777,26 +764,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "buscarClienteCadastroCompletoPorId", parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
-                print(NSString.init(data:resposta.request!.HTTPBody!, encoding:NSUTF8StringEncoding))
+        Alamofire.request(URL(string: urlBase + "buscarClienteCadastroCompletoPorId")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<ClienteCadastroCompletoSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<ClienteCadastroCompletoSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: ClienteCadastroCompletoSaida? = resposta.result.value
                 
-                sucesso(objeto:saida?.cliente, resultado: (saida?.resultado!.erro)!)
+                sucesso(saida?.cliente, (saida?.resultado!.erro)!)
         }
     }
 
@@ -804,25 +790,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "editarClienteCadastroCompletoPorId" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "editarClienteCadastroCompletoPorId")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<BaseSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<BaseSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: BaseSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.resultado)
+                sucesso(saida?.resultado)
         }
     }
 
@@ -830,25 +816,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "buscarPedido" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "buscarPedido")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<PedidoConsultaSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<PedidoConsultaSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: PedidoConsultaSaida? = resposta.result.value
                 
-                sucesso(objeto:saida, resultado: (saida?.resultado!.erro)!)
+                sucesso(saida, (saida?.resultado!.erro)!)
         }
     }
     
@@ -856,25 +842,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "buscarPedidoPorId" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "buscarPedidoPorId")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<CartaoPagamentoSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<CartaoPagamentoSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: CartaoPagamentoSaida? = resposta.result.value
                 
-                sucesso(objeto:saida, resultado: (saida?.resultado!.erro)!)
+                sucesso(saida, (saida?.resultado!.erro)!)
         }
     }
     
@@ -882,25 +868,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "incluirAgendaOrcamento" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "incluirAgendaOrcamento")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<BaseSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<BaseSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: BaseSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.resultado)
+                sucesso(saida?.resultado)
         }
     }
     
@@ -908,26 +894,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "getNet/" + tipo , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
-                print(NSString.init(data:resposta.request!.HTTPBody!, encoding:NSUTF8StringEncoding))
+        Alamofire.request(URL(string: urlBase + "getNet/" + tipo)!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<GetNetPagamentoSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<GetNetPagamentoSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: GetNetPagamentoSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.pedido, resultado: saida?.resultado)
+                sucesso(saida?.pedido, saida?.resultado)
         }
     }
     
@@ -935,26 +920,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "incluirCheckList", parameters: parametros, encoding: .JSON)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
-                print(NSString.init(data:resposta.request!.HTTPBody!, encoding:NSUTF8StringEncoding))
+        Alamofire.request(URL(string: urlBase + "incluirCheckList")!, method: .post, parameters: parametros, encoding: JSONEncoding.default)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<BaseSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<BaseSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: BaseSaida? = resposta.result.value
                 
-                sucesso(resultado:saida?.resultado)
+                sucesso(saida?.resultado)
         }
     }
 
@@ -962,25 +946,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "incluirCliente" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "incluirCliente")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<ClienteIncluirSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<ClienteIncluirSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: ClienteIncluirSaida? = resposta.result.value
                 
-                sucesso(objeto:saida?.cliente, resultado: (saida?.resultado)!)
+                sucesso(saida?.cliente, (saida?.resultado)!)
         }
     }
 
@@ -988,25 +972,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "buscarClientePor" + tipo , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "buscarClientePor" + tipo)!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<ClienteBuscarSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<ClienteBuscarSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: ClienteBuscarSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.cliente, resultado:  saida?.resultado)
+                sucesso(saida?.cliente, saida?.resultado)
         }
     }
     
@@ -1014,25 +998,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "consultarDatasDisponiveis" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "consultarDatasDisponiveis")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<DatasDisponiveisSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<DatasDisponiveisSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: DatasDisponiveisSaida? = resposta.result.value
                 
-                sucesso(objeto: saida?.datas, resultado:  saida?.resultado)
+                sucesso(saida?.datas, saida?.resultado)
         }
     }
     
@@ -1040,25 +1024,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "ponto/" + tipo , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "ponto/" + tipo)!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<BaseSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<BaseSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: BaseSaida? = resposta.result.value
                 
-                sucesso(resultado:  saida?.resultado)
+                sucesso(saida?.resultado)
         }
     }
     
@@ -1066,26 +1050,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "buscarClientesPorFranquia" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
-                print(NSString.init(data:resposta.request!.HTTPBody!, encoding:NSUTF8StringEncoding))
+        Alamofire.request(URL(string: urlBase + "buscarClientesPorFranquia")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<ClientesBuscarSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<ClientesBuscarSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: ClientesBuscarSaida? = resposta.result.value
                 
-                sucesso(objeto: saida, resultado:  saida?.resultado)
+                sucesso(saida, saida?.resultado)
         }
     }
 
@@ -1093,25 +1076,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "excluirCartao" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "excluirCartao")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<BaseSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<BaseSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: BaseSaida? = resposta.result.value
                 
-                sucesso(resultado:  saida?.resultado)
+                sucesso(saida?.resultado)
         }
     }
     
@@ -1119,25 +1102,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "loja/" + tipo, parameters: parametros, encoding: .JSON)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
+        Alamofire.request(URL(string: urlBase + "loja/" + tipo)!, method: .post, parameters: parametros, encoding: JSONEncoding.default)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<LojaCalculoPedidoSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<LojaCalculoPedidoSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: LojaCalculoPedidoSaida? = resposta.result.value
                 
-                sucesso(objeto:saida?.calculo, resultado: saida?.resultado)
+                sucesso(saida?.calculo, saida?.resultado)
         }
     }
 
@@ -1145,26 +1128,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "loja/buscarPorFranquia" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
-                print(NSString.init(data:resposta.request!.HTTPBody!, encoding:NSUTF8StringEncoding))
+        Alamofire.request(URL(string: urlBase + "loja/buscarPorFranquia")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<LojaListaPedidosSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<LojaListaPedidosSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: LojaListaPedidosSaida? = resposta.result.value
                 
-                sucesso(objeto:saida?.pedidos, resultado: saida?.resultado)
+                sucesso(saida?.pedidos, saida?.resultado)
         }
     }
     
@@ -1172,26 +1154,25 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "loja/efetivar", parameters: parametros, encoding: .JSON)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
-                print(NSString.init(data:resposta.request!.HTTPBody!, encoding:NSUTF8StringEncoding))
+        Alamofire.request(URL(string: urlBase + "loja/efetivar")!, method: .post, parameters: parametros, encoding: JSONEncoding.default)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
                 print(resposta)
             })
-            .responseObject { (resposta: Response<LojaEfetivaPedidoSaida, NSError>)  in
+            .responseObject { (resposta: DataResponse<LojaEfetivaPedidoSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: LojaEfetivaPedidoSaida? = resposta.result.value
                 
-                sucesso(objeto:saida?.pedido, resultado: saida?.resultado)
+                sucesso(saida?.pedido, saida?.resultado)
         }
     }
     
@@ -1199,26 +1180,24 @@ class PinturaAJatoApi {
         
         exibeProcessando(view)
         
-        Alamofire.request(.POST, urlBase + "loja/buscarDetalhe" , parameters: parametros)
-            .responseString(completionHandler: { (resposta:Response<String, NSError>) in
-                print(resposta.request?.URLString)
-                print(NSString.init(data:resposta.request!.HTTPBody!, encoding:NSUTF8StringEncoding))
-                print(resposta)
-            })
-            .responseObject { (resposta: Response<LojaDetalhePedidoSaida, NSError>)  in
+        Alamofire.request(URL(string: urlBase + "loja/buscarDetalhe")!, method: .post, parameters: parametros)
+            .responseString(completionHandler: { (resposta:DataResponse<String>) in
+                print(resposta.request?.url?.absoluteString)
+                })
+            .responseObject { (resposta: DataResponse<LojaDetalhePedidoSaida>)  in
                 
                 self.escondeProcessando(view)
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error)
+                    self.trataErroGenerico(resposta.result.error as? NSError)
                     
                     return
                 }
                 
                 let saida: LojaDetalhePedidoSaida? = resposta.result.value
                 
-                sucesso(objeto:saida, resultado: saida?.resultado)
+                sucesso(saida, saida?.resultado)
         }
     }
     

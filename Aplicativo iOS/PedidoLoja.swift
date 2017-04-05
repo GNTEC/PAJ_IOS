@@ -18,7 +18,7 @@ class PedidoLoja : Mappable {
     var valor_unitario : Float
     var status : String?
 
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
         id = 0
         valor_total = 0.0
@@ -26,7 +26,7 @@ class PedidoLoja : Mappable {
         valor = 0.0
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         
         data_pedido <- map["data_pedido"]
         id <- map["id"]

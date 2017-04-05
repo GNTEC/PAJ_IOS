@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		556C41E61E95859C00D3CED7 /* VSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556C41E51E95859C00D3CED7 /* VSTextField.swift */; };
 		650B29661D9354F70066650B /* CelulaOrcamentoPrincipalTrincaDetalheTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650B29651D9354F70066650B /* CelulaOrcamentoPrincipalTrincaDetalheTableViewCell.swift */; };
 		650B53871D0275D9006D9C30 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 650B53861D0275D9006D9C30 /* Launch Screen.storyboard */; };
 		6518BC151D9E00EA00AF69CA /* Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6518BC141D9E00EA00AF69CA /* Mask.swift */; };
@@ -87,7 +88,6 @@
 		656D44441D7E44A3009716FB /* Avaliacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D44431D7E44A3009716FB /* Avaliacao.swift */; };
 		656D44461D7E4B20009716FB /* AgendaEventoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D44451D7E4B20009716FB /* AgendaEventoViewController.swift */; };
 		656D44481D7E555C009716FB /* AvisoProcessamento.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D44471D7E555C009716FB /* AvisoProcessamento.swift */; };
-		657AEA941DA1B02A00C0CC17 /* VSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657AEA931DA1B02A00C0CC17 /* VSTextField.swift */; };
 		657D6D6A1D0E1DFA006F2C07 /* GenericoEntradaTexto.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657D6D691D0E1DFA006F2C07 /* GenericoEntradaTexto.xib */; };
 		6580AF091D9C9576003AFB2C /* EsqueciSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580AF081D9C9576003AFB2C /* EsqueciSenhaViewController.swift */; };
 		6580AF0B1D9CA65F003AFB2C /* FinanceiroCancelarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580AF0A1D9CA65F003AFB2C /* FinanceiroCancelarViewController.swift */; };
@@ -224,6 +224,7 @@
 /* Begin PBXFileReference section */
 		11D99FF4F3CEF5C456304AEE /* Pods_Pintura_a_Jato.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pintura_a_Jato.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F9A398E3AE272ACFC5DE37 /* libPods-Aplicativo iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Aplicativo iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		556C41E51E95859C00D3CED7 /* VSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSTextField.swift; sourceTree = "<group>"; };
 		650B29651D9354F70066650B /* CelulaOrcamentoPrincipalTrincaDetalheTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelulaOrcamentoPrincipalTrincaDetalheTableViewCell.swift; sourceTree = "<group>"; };
 		650B53861D0275D9006D9C30 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6518BC141D9E00EA00AF69CA /* Mask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mask.swift; sourceTree = "<group>"; };
@@ -305,7 +306,6 @@
 		656D44431D7E44A3009716FB /* Avaliacao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avaliacao.swift; sourceTree = "<group>"; };
 		656D44451D7E4B20009716FB /* AgendaEventoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaEventoViewController.swift; sourceTree = "<group>"; };
 		656D44471D7E555C009716FB /* AvisoProcessamento.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvisoProcessamento.swift; sourceTree = "<group>"; };
-		657AEA931DA1B02A00C0CC17 /* VSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VSTextField.swift; sourceTree = "<group>"; };
 		657D6D691D0E1DFA006F2C07 /* GenericoEntradaTexto.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericoEntradaTexto.xib; sourceTree = "<group>"; };
 		6580AF081D9C9576003AFB2C /* EsqueciSenhaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EsqueciSenhaViewController.swift; sourceTree = "<group>"; };
 		6580AF0A1D9CA65F003AFB2C /* FinanceiroCancelarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinanceiroCancelarViewController.swift; sourceTree = "<group>"; };
@@ -660,7 +660,7 @@
 		6587F5A81D73C1F700B35A00 /* Comum */ = {
 			isa = PBXGroup;
 			children = (
-				657AEA931DA1B02A00C0CC17 /* VSTextField.swift */,
+				556C41E51E95859C00D3CED7 /* VSTextField.swift */,
 				65E27C261CFD1A4300B15941 /* Main.storyboard */,
 				65F993A11D70DA5E00C20EB3 /* LoginViewController.swift */,
 				6587F5AC1D73C70A00B35A00 /* AppDelegate.swift */,
@@ -1025,7 +1025,6 @@
 				65F644421D84B26300FAD099 /* BotaoItemOrcamento.swift in Sources */,
 				654895A71D7F961700899B05 /* Valor.swift in Sources */,
 				65A67E861D8DD61100F22F97 /* CelulaPedidoFotosTableViewCell.swift in Sources */,
-				657AEA941DA1B02A00C0CC17 /* VSTextField.swift in Sources */,
 				65BC709E1D8B82D100D582E5 /* OrcamentoFinalizarViewController.swift in Sources */,
 				65F6444A1D84CE8000FAD099 /* ItemOrcamentoComplexo.swift in Sources */,
 				65353BD01D809661007A59A4 /* ManualExibirConteudoViewController.swift in Sources */,
@@ -1060,6 +1059,7 @@
 				655DCA501D7B641D00572C28 /* Data.swift in Sources */,
 				65F6446C1D84F75600FAD099 /* CelulaConclusaoOrcamentoConfirmacaoTableViewCell.swift in Sources */,
 				65A67E741D8D864A00F22F97 /* CelulaOrcamentoChecklistComplexaTableViewCell.swift in Sources */,
+				556C41E61E95859C00D3CED7 /* VSTextField.swift in Sources */,
 				6518BC151D9E00EA00AF69CA /* Mask.swift in Sources */,
 				656D44401D7E3C77009716FB /* MediaAvaliacoesViewController.swift in Sources */,
 				654895AD1D7F9D6200899B05 /* ConsultaRecebimentoDetalheSaida.swift in Sources */,

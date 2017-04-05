@@ -20,14 +20,14 @@ class Manual : Mappable {
     var url: String?
     var atualizacao: String?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         id = 0
         id_franquia = 0
         id_tipo_manual = 0
         status = 0
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         id <- map["id"]
         id_franquia <- map["id_franquia"]
         id_tipo_manual <- map["id_tipo_manual"]

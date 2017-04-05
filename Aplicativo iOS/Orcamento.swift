@@ -1388,7 +1388,8 @@ class Orcamento {
                 json_item_complexo["indice"] = itemOrcamentoComplexoDetalhe.indice as AnyObject?
                 
                 if(itemOrcamentoComplexoDetalhe.configuracaoMassaCorrida) {
-                    json_item_complexo["massa_corrida"] = (itemOrcamentoComplexoDetalhe.necessitaMassaCorrida == nil ? "0" : itemOrcamentoComplexoDetalhe.necessitaMassaCorrida! ? "1" : ("0"));
+                    let necessitaMassaCorridaString = (itemOrcamentoComplexoDetalhe.necessitaMassaCorrida == nil ? "0" : (itemOrcamentoComplexoDetalhe.necessitaMassaCorrida! ? "1" : "0"))
+                    json_item_complexo["massa_corrida"] = necessitaMassaCorridaString as AnyObject?
                 }
                 
                 var array_itens_pintura = Array< Dictionary<String, AnyObject> >()

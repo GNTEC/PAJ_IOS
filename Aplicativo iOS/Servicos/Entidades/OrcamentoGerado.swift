@@ -50,7 +50,7 @@ class OrcamentoGerado: Mappable {
     // Resposta do checklist
     var trincas: String?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
         id = 0
         id_cliente = 0
@@ -58,7 +58,7 @@ class OrcamentoGerado: Mappable {
         avaliacao = 0
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         
         /*let transform = TransformOf<Int, String>(fromJSON: { (value: String?) -> Int? in
             // transform value from String? to Int?

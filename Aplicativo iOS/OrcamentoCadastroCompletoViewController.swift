@@ -101,17 +101,17 @@ class OrcamentoCadastroCompletoViewController : UIViewController, UIGestureRecog
             "id_endereco": "\(cliente!.id_endereco)" as AnyObject,
             "nome": cliente!.nome! as AnyObject,
             "email": cliente!.email! as AnyObject,
-            "telefone": cliente!.telefone!,
-            "celular": celular!,
-            "cpf": cpf!,
-            "rg": edit_rg.text!,
-            "logradouro": cliente!.logradouro!,
-            "numero": edit_numero.text!,
-            "complemento": edit_complemento.text!,
-            "bairro": cliente!.bairro!,
-            "cidade": cliente!.cidade!,
-            "uf": cliente!.uf!,
-            "cep": cliente!.cep!
+            "telefone": cliente!.telefone! as AnyObject,
+            "celular": celular! as AnyObject,
+            "cpf": cpf! as AnyObject,
+            "rg": edit_rg.text! as AnyObject,
+            "logradouro": cliente!.logradouro! as AnyObject,
+            "numero": edit_numero.text! as AnyObject,
+            "complemento": edit_complemento.text! as AnyObject,
+            "bairro": cliente!.bairro! as AnyObject,
+            "cidade": cliente!.cidade! as AnyObject,
+            "uf": cliente!.uf! as AnyObject,
+            "cep": cliente!.cep! as AnyObject
         ]
         
         api.editarClienteCadastroCompletoPorId(self.navigationController!.view, parametros: parametros, sucesso: { (objeto: Resultado?) -> Bool in

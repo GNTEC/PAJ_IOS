@@ -14,12 +14,12 @@ class Avaliacao : Mappable {
     var pedidos: Int
     var media: Int
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         pedidos = 0
         media = 0
     }
     
-    func mapping(_ map: Map) {
+    func mapping(map: Map) {
         pedidos <- map["pedidos"]
         media <- map["media"]
     }
