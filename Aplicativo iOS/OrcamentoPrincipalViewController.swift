@@ -73,7 +73,7 @@ class OrcamentoPrincipalViewController: UIViewController, UITableViewDelegate, U
     let ALTURA_BOTAO_ADICIONAR : CGFloat = 48.0
     let ALTURA_BOTAO_EXCLUIR : CGFloat = 48.0
 
-    let ALTURA_MAXIMA_CELULA_DETALHE_COMPLEXO : CGFloat = 440.0
+    let ALTURA_MAXIMA_CELULA_DETALHE_COMPLEXO : CGFloat = 470.0
     // tamanho máximo sem ocultar nenhum campo do painel com as medidas (altura, largura, etc)
     let ALTURA_MAXIMA_PAINEL_MEDIDAS : CGFloat = 415.0
     // mesma coisa para os botões
@@ -610,6 +610,7 @@ class OrcamentoPrincipalViewController: UIViewController, UITableViewDelegate, U
                 let altura_portas =  (!itemComplexoDetalhe.exibeQuantidadePortas ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL)
                 let altura_janelas = (!itemComplexoDetalhe.exibeQuantidadeJanelas ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL)
                 let altura_interruptores =  (!itemComplexoDetalhe.exibeQuantidadeInterruptores ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL)
+                let altura_obs = (!itemComplexoDetalhe.exibeObs ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL)
                 
                 var altura_botoes : CGFloat = ALTURA_BOTAO_DUPLICAR + ALTURA_BOTAO_COR + ALTURA_BOTAO_ADICIONAR;
                 

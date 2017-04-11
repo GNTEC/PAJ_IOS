@@ -23,6 +23,7 @@ class OrcamentoItem : Mappable {
     var portas: Int
     var janelas: Int
     var interruptores: Int
+    var observacao: String?
     var massa_corrida: Int?
     
     // Para bater o cálculo com o item enviado
@@ -58,6 +59,7 @@ class OrcamentoItem : Mappable {
         portas <- map["portas"]
         janelas <- map["janelas"]
         interruptores <- map["interruptores"]
+        observacao <- map["observacao"]
         massa_corrida <- map["massa_corrida"]
         if massa_corrida == nil {
             var texto : String?

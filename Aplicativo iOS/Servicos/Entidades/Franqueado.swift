@@ -37,6 +37,7 @@ class Franqueado : Mappable {
         
         id <- map["id"]
         id_franquia <- map["id_franquia"]
+        nome <- map["nome"]
         sobrenome <- map["sobrenome"]
         razaoSocial <- map["razaoSocial"]
         nomeFantasia <- map["nomeFantasia"]

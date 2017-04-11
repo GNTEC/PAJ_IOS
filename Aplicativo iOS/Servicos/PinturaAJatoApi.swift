@@ -48,11 +48,21 @@ class PinturaAJatoApi {
         return self.sessao!.id!
     }
     
-    let urlBase = "https://www.pinturaajato.com/api/"
-    let urlBaseManuais = "https://www.pinturaajato.com/uploads/manual/"
-    let urlBaseFotosUsuarios = "https://www.pinturaajato.com/uploads/usuario/"
-    let urlBaseFotosPedidos =  "https://www.pinturaajato.com/uploads/foto/"
-    let urlBaseFotosProdutos = "https://www.pinturaajato.com/uploads/produto/"
+//    let urlBase = "https://www.pinturaajato.com/api/"
+//    let urlBaseManuais = "https://www.pinturaajato.com/uploads/manual/"
+//    let urlBaseFotosUsuarios = "https://www.pinturaajato.com/uploads/usuario/"
+//    let urlBaseFotosPedidos =  "https://www.pinturaajato.com/uploads/foto/"
+//    let urlBaseFotosProdutos = "https://www.pinturaajato.com/uploads/produto/"
+    
+    //paj.azurewebsites.net
+    //paj.azurewebsites.net/api
+    
+    let urlBase = "https://paj.azurewebsites.net/api/"
+    let urlBaseManuais = "https://paj.azurewebsites.net/uploads/manual/"
+    let urlBaseFotosUsuarios = "https://paj.azurewebsites.net/uploads/usuario/"
+    let urlBaseFotosPedidos =  "https://paj.azurewebsites.net/uploads/foto/"
+    let urlBaseFotosProdutos = "https://paj.azurewebsites.net/uploads/produto/"
+    
     let mensagem = "Processando"
     
     func exibeProcessando(_ view: UIView) {
@@ -670,7 +680,7 @@ class PinturaAJatoApi {
                 
                 if resposta.result.error != nil {
                     
-                    self.trataErroGenerico(resposta.result.error as? NSError)
+                    self.trataErroGenerico(resposta.result.error as NSError?)
                     
                     return
                 }
@@ -680,7 +690,6 @@ class PinturaAJatoApi {
                 sucesso(saida?.orcamento, (saida?.resultado!.erro)!)
         }
     }
-
     
     func incluirOrcamento(_ view: UIView, parametros: [String: AnyObject], sucesso: @escaping (_ objeto: OrcamentoGerado?, _ resultado: Bool) -> Bool) {
         
@@ -688,7 +697,7 @@ class PinturaAJatoApi {
         
         Alamofire.request(URL(string: urlBase + "incluirOrcamento")!, method: .post, parameters: parametros, encoding: JSONEncoding.default)
             .responseString(completionHandler: { (resposta:DataResponse<String>) in
-                print(resposta.request?.url?.absoluteString)
+                print(resposta.request?.url?.absoluteString as Any)
                 print(resposta)
             })
             .responseObject { (resposta: DataResponse<OrcamentoConsultaSaida>)  in

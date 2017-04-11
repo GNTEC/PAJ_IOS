@@ -38,6 +38,7 @@ enum PassosFinalizacao : String {
     case EfetivarPagamentoCartaoCredito
     case RefazerOrcamento
     case EfetivarPagamentoDinheiroMaquina
+    case EfetivarPagamentoMaquina
 }
 
 class OrcamentoFinalizarViewController : UIViewController {
@@ -177,7 +178,9 @@ class OrcamentoFinalizarViewController : UIViewController {
         else if (proximoPasso == PassosFinalizacao.EfetivarPagamentoDinheiroMaquina) {
             efetivaPagamentoDinheiroMaquina();
         }
-        
+        else if (proximoPasso == PassosFinalizacao.EfetivarPagamentoMaquina) {
+            efetivaPagamentoMaquina();
+        }
     }
     
     func refazOrcamento() {
@@ -261,6 +264,64 @@ class OrcamentoFinalizarViewController : UIViewController {
     }
     
     func efetivaPagamento() {
+        
+        let api = PinturaAJatoApi()
+        
+        var parametros = [String:AnyObject]()
+        parametros["id_franquia"] = "\(PinturaAJatoApi.obtemFranqueado()!.id_franquia)" as AnyObject
+        parametros["id_sessao"] = PinturaAJatoApi.obtemIdSessao() as AnyObject
+        parametros["id_orcamento"] = "\(contexto!.id_orcamento)" as AnyObject
+        parametros["id_cliente"] = "\(contexto!.id_cliente!)" as AnyObject
+        parametros["valor"] = Valor.floatParaStringValor(contexto!.valorDebito) as AnyObject
+        parametros["cartao"] = contexto!.cartao! as AnyObject
+        parametros["cvv"] = contexto!.cvv! as AnyObject
+        parametros["mes"] = contexto!.mes! as AnyObject
+        parametros["ano"] = "20" + contexto!.ano! as AnyObject
+        parametros["nome"] = contexto!.nome! as AnyObject
+        parametros["tipo_pagamento"] = contexto!.tipoPagamento == TipoPagamento.AVista ? "SGL" as AnyObject : "ISS" as AnyObject
+        parametros["parcelas"] = "\(contexto!.parcelas!)" as AnyObject
+        parametros["descricao"] = contexto!.descricao! as AnyObject
+        parametros["forma_de_pagamento"] = contexto!.tipoPagamento!.rawValue as AnyObject
+        parametros["meio_de_pagamento"] = TipoMeioPagamento.CartaoCredito.rawValue as AnyObject
+        parametros["numero_parcelas"] = "\(contexto!.parcelas!)" as AnyObject
+        parametros["valor_parcelas"] = Valor.floatParaStringValor(contexto!.valorParcela) as AnyObject
+        parametros["status_pagamento"] =  contexto!.tipoPagamento == TipoPagamento.ComEntrada ? "2" as AnyObject : "1" as AnyObject
+        parametros["valor_bruto"] = Valor.floatParaStringValor(contexto!.valorPagamento) as AnyObject
+        parametros["valor_residual"] = (contexto!.tipoPagamento == TipoPagamento.ComEntrada ? Valor.floatParaStringValor(contexto!.valorPagamento - contexto!.valorDebito) : "") as AnyObject
+        parametros["dias_servico"] = "\(contexto!.diasServico)" as AnyObject
+        
+        api.getNet(self.navigationController!.view, tipo: "pagamento", parametros: parametros, sucesso: { (objeto: PedidoGetNet?, resultado: Resultado?) -> Bool in
+            
+            if resultado!.erro {
+                
+                AvisoProcessamento.mensagemErroGenerico(resultado?.mensagem)
+                
+                return false
+            }
+            else {
+                
+                if objeto!.descriptionResponse == "NOT APPROVED" {
+                    
+                    AvisoProcessamento.mensagemErroGenerico("Pagamento não aprovado.", mensagemTecnica: objeto?.descriptionResponse)
+                    
+                    return false
+                }
+                
+                let id = self.contexto!.id_orcamento
+                
+                Orcamento.limpaOrcamento()
+                
+                AvisoProcessamento.mensagemSucessoGenerico(self, mensagem: String(format: "Pedido #%06d incluído", id), destino: {
+                    
+                    self.prossegueHistorico()
+                })
+            }
+            
+            return true
+        })
+    }
+    
+    func efetivaPagamentoMaquina() {
         
         let api = PinturaAJatoApi()
         

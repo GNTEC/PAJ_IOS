@@ -21,6 +21,8 @@ class CelulaOrcamentoPrincipalComplexaDetalheTableViewCell: UITableViewCell, UIT
     @IBOutlet weak var edit_quantidade_portas: UITextField!
     @IBOutlet weak var edit_quantidade_janelas: UITextField!
     @IBOutlet weak var edit_quantidade_interruptores: UITextField!
+    @IBOutlet weak var edit_obs: UITextField!
+    
     
     @IBOutlet weak var botao_duplicar: UIButton!
     @IBOutlet weak var botao_cor: UIButton!
@@ -48,6 +50,9 @@ class CelulaOrcamentoPrincipalComplexaDetalheTableViewCell: UITableViewCell, UIT
     @IBOutlet weak var label_portas: UILabel!
     @IBOutlet weak var label_janelas: UILabel!
     @IBOutlet weak var label_interruptores: UILabel!
+    @IBOutlet weak var label_obs: UILabel!
+
+    
     
     var itemOrcamento: ItemOrcamentoComplexoDetalhe?
     var interacao: interacaoComplexaDetalhe?
@@ -57,7 +62,7 @@ class CelulaOrcamentoPrincipalComplexaDetalheTableViewCell: UITableViewCell, UIT
         super.awakeFromNib()
         // Initialization code
         
-        let controles = [ edit_altura, edit_largura, edit_comprimento, edit_quantidade_portas, edit_quantidade_janelas, edit_quantidade_interruptores];
+        let controles = [ edit_altura, edit_largura, edit_comprimento, edit_quantidade_portas, edit_quantidade_janelas, edit_quantidade_interruptores,edit_obs];
         
         for controle in controles {
             controle?.addTarget(self, action: #selector(textoMudou), for: UIControlEvents.editingChanged)
@@ -130,6 +135,7 @@ class CelulaOrcamentoPrincipalComplexaDetalheTableViewCell: UITableViewCell, UIT
         edit_quantidade_portas.text = itemOrcamento.quantidadePortas
         edit_quantidade_janelas.text = itemOrcamento.quantidadeJanelas
         edit_quantidade_interruptores.text = itemOrcamento.quantidadeInterruptores
+        edit_obs.text = itemOrcamento.observacao
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -216,6 +222,10 @@ class CelulaOrcamentoPrincipalComplexaDetalheTableViewCell: UITableViewCell, UIT
         }
         else if sender as! NSObject == self.edit_quantidade_interruptores {
             itemOrcamento?.quantidadeInterruptores = edit_quantidade_interruptores.text
+        }
+        
+        else if sender as! NSObject == self.edit_obs {
+            itemOrcamento?.observacao = edit_obs.text
         }
     }
     

@@ -458,10 +458,10 @@ class OrcamentoConfirmacaoViewController : UITableViewController, NotificaOrcame
             parcelas = escolhaPagamento.parcelas
         }
         
-        if pagamentoDinheiroMaquina && novoTipoPagamento != TipoPagamento.AVista {
-            AvisoProcessamento.mensagemErroGenerico("Pagamento em dinheiro/máquina somente à vista")
-            return
-        }
+//        if pagamentoDinheiroMaquina && novoTipoPagamento != TipoPagamento.AVista {
+//            AvisoProcessamento.mensagemErroGenerico("Pagamento em dinheiro/máquina somente à vista")
+//            return
+//        }
         
         ////////////////////////////////////////////////////////////////////////
         

@@ -58,6 +58,7 @@ class ItemOrcamentoComplexoDetalhe : ItemOrcamento {
     var quantidadePortas: String?
     var quantidadeJanelas: String?
     var quantidadeInterruptores: String?
+    var observacao: String?
     
     // Complexa
     var exibeAltura: Bool
@@ -65,6 +66,7 @@ class ItemOrcamentoComplexoDetalhe : ItemOrcamento {
     var exibeQuantidadePortas: Bool
     var exibeQuantidadeJanelas: Bool
     var exibeQuantidadeInterruptores: Bool
+    var exibeObs: Bool
     var exibeBotaoExcluir: Bool
     var exibeBotaoParedeAvulsa: Bool
     var exibeBotaoTetoAvulso: Bool
@@ -89,6 +91,7 @@ class ItemOrcamentoComplexoDetalhe : ItemOrcamento {
         exibeQuantidadePortas = true
         exibeQuantidadeJanelas = true
         exibeQuantidadeInterruptores = true
+        exibeObs = true
         exibeBotaoExcluir = true
         exibeBotaoParedeAvulsa = true
         configuracaoMassaCorrida = false
@@ -131,6 +134,7 @@ class ItemOrcamentoComplexoDetalhe : ItemOrcamento {
         exibeQuantidadePortas = true
         exibeQuantidadeJanelas = true
         exibeQuantidadeInterruptores = true
+        exibeObs = true
         exibeBotaoExcluir = true
         exibeBotaoParedeAvulsa = true
         exibeBotaoTetoAvulso = false
@@ -145,12 +149,14 @@ class ItemOrcamentoComplexoDetalhe : ItemOrcamento {
         self.quantidadePortas = (itemOrcamentoCopiar.quantidadePortas);
         self.quantidadeJanelas = (itemOrcamentoCopiar.quantidadeJanelas);
         self.quantidadeInterruptores = (itemOrcamentoCopiar.quantidadeInterruptores);
+        self.observacao = (itemOrcamentoCopiar.observacao);
         
         self.exibeAltura = itemOrcamentoCopiar.exibeAltura;
         self.exibeComprimento = itemOrcamentoCopiar.exibeComprimento;
         self.exibeQuantidadePortas = itemOrcamentoCopiar.exibeQuantidadePortas;
         self.exibeQuantidadeJanelas = itemOrcamentoCopiar.exibeQuantidadeJanelas;
         self.exibeQuantidadeInterruptores = itemOrcamentoCopiar.exibeQuantidadeInterruptores;
+        self.exibeObs = itemOrcamentoCopiar.exibeObs;
         self.exibeBotaoExcluir = itemOrcamentoCopiar.exibeBotaoExcluir;
         self.exibeBotaoParedeAvulsa = itemOrcamentoCopiar.exibeBotaoParedeAvulsa;
         self.exibeBotaoTetoAvulso = itemOrcamentoCopiar.exibeBotaoTetoAvulso;

@@ -12,5 +12,6 @@ enum TipoPagamento : String {
     case AVista = "AVista"
     case Parcelado = "Parcelado"
     case ComEntrada = "ComEntrada"
+    case Maquina = "Maquina"
     case Nenhum = "Nenhum"
 }

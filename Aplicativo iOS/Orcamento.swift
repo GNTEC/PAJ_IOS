@@ -1385,6 +1385,7 @@ class Orcamento {
                 json_item_complexo["portas"] = (itemOrcamentoComplexoDetalhe.quantidadePortas as AnyObject?);
                 json_item_complexo["janelas"] = (itemOrcamentoComplexoDetalhe.quantidadeJanelas as AnyObject?);
                 json_item_complexo["interruptores"] = (itemOrcamentoComplexoDetalhe.quantidadeInterruptores as AnyObject?);
+                json_item_complexo["observacao"] = (itemOrcamentoComplexoDetalhe.observacao as AnyObject?)
                 json_item_complexo["indice"] = itemOrcamentoComplexoDetalhe.indice as AnyObject?
                 
                 if(itemOrcamentoComplexoDetalhe.configuracaoMassaCorrida) {
