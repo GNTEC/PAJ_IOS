@@ -306,6 +306,15 @@ class OrcamentoConfirmacaoViewController : UITableViewController, NotificaOrcame
                 
                 cell_ambiente.label_valor.text = String(format: obtemString("mascara_valor"), Valor.floatParaMoedaString(itemComplexoDetalhe.valorCalculado))
                 
+                if itemComplexoDetalhe.exibeObs && itemComplexoDetalhe.observacao != nil{
+                    cell_ambiente.label_observacao.text = String(format: obtemString("mascara_obs"), itemComplexoDetalhe.observacao!)
+                }
+                else {
+                    cell_ambiente.label_observacao.isHidden = true
+                    ajuste_painel += cell_ambiente.constraint_altura_obs.constant
+                    cell_ambiente.constraint_altura_obs.constant = 0.0
+                }
+                
                 if itemComplexoDetalhe.necessitaMassaCorrida != nil {
                     cell_ambiente.label_massa.text = obtemString(itemComplexoDetalhe.necessitaMassaCorrida! ? "literal_necessita_massa_corrida" : "literal_nao_necessita_massa_corrida")
                 }

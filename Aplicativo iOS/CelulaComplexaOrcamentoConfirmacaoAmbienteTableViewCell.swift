@@ -17,9 +17,12 @@ class CelulaComplexaOrcamentoConfirmacaoAmbienteTableViewCell : UITableViewCell 
     @IBOutlet weak var label_comprimento: UILabel!
     @IBOutlet weak var label_massa: UILabel!
     @IBOutlet weak var label_valor: UILabel!
+    @IBOutlet weak var label_observacao: UILabel!
+    
     
     @IBOutlet weak var constraint_altura_altura: NSLayoutConstraint!
     @IBOutlet weak var constraint_altura_comprimento: NSLayoutConstraint!
     @IBOutlet weak var constraint_altura_massa: NSLayoutConstraint!
     @IBOutlet weak var constraint_altura_painel: NSLayoutConstraint!
+    @IBOutlet weak var constraint_altura_obs: NSLayoutConstraint!
 }

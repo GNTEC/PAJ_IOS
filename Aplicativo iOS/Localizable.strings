@@ -161,6 +161,7 @@
 "mascara_largura" = "Largura: %@ m";
 "mascara_comprimento" = "Comprimento: %@ m";
 "mascara_valor" = "Valor: R$ %@";
+"mascara_obs" = "Observação: %@";
 
 "ajuda_passo_1"="1ª pintura: Ambientes novos que nunca receberam nenhum tipo de pintura.\n\nRepintura: Ambientes novos ou usados que já receberam uma ou mais pinturas.";
 "ajuda_passo_2"="Esta pergunta refere-se ao estado que o imóvel ou ambiente está e sua ocupação.\n\nSim: Selecione esta opção se o imóvel ou ambiente estiver totalmente desocupado de móveis, objetos e itens que necessitem proteção.\n\nNão: Selecione esta opção se o imóvel ou ambiente contém itens que necessitem proteção.";

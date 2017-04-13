@@ -1666,7 +1666,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6eE-tu-HDn">
-                                                    <rect key="frame" x="8" y="31" width="498" height="194"/>
+                                                    <rect key="frame" x="8" y="31" width="498" height="210"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medidas do Ambiente" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFH-W0-jXf">
                                                             <rect key="frame" x="8" y="8" width="482" height="21"/>
@@ -1712,6 +1712,18 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valor: R$ 240,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9h-Ev-RMT">
                                                             <rect key="frame" x="8" y="153" width="486" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="AJS-Eu-x71"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Observação: Teste Teste" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGE-2V-TZY">
+                                                            <rect key="frame" x="8" y="182" width="486" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="ybr-Qq-G7n"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1720,9 +1732,10 @@
                                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="d3K-2v-epm" firstAttribute="leading" secondItem="6eE-tu-HDn" secondAttribute="leading" constant="8" id="1oI-uP-zMD"/>
-                                                        <constraint firstAttribute="height" constant="194" id="A73-P6-Mbw"/>
+                                                        <constraint firstAttribute="height" constant="210" id="A73-P6-Mbw"/>
                                                         <constraint firstItem="cjI-VG-Bcz" firstAttribute="leading" secondItem="6eE-tu-HDn" secondAttribute="leading" constant="8" id="CyW-qE-hbq"/>
                                                         <constraint firstItem="cjI-VG-Bcz" firstAttribute="top" secondItem="hyE-2O-prg" secondAttribute="bottom" constant="8" id="Fb4-v4-6so"/>
+                                                        <constraint firstItem="pGE-2V-TZY" firstAttribute="top" secondItem="L9h-Ev-RMT" secondAttribute="bottom" constant="8" id="Gzb-4a-QcH"/>
                                                         <constraint firstItem="hyE-2O-prg" firstAttribute="top" secondItem="wFH-W0-jXf" secondAttribute="bottom" constant="8" id="HLE-2Q-f3e"/>
                                                         <constraint firstAttribute="trailing" secondItem="cjI-VG-Bcz" secondAttribute="trailing" constant="4" id="KLO-Ya-unw"/>
                                                         <constraint firstItem="Ffm-qz-FGu" firstAttribute="top" secondItem="cjI-VG-Bcz" secondAttribute="bottom" constant="8" id="N7U-OD-uAr"/>
@@ -1731,12 +1744,14 @@
                                                         <constraint firstAttribute="trailing" secondItem="L9h-Ev-RMT" secondAttribute="trailing" constant="4" id="RJc-OL-U7K"/>
                                                         <constraint firstItem="L9h-Ev-RMT" firstAttribute="top" secondItem="d3K-2v-epm" secondAttribute="bottom" constant="8" id="RY1-EH-rvl"/>
                                                         <constraint firstItem="wFH-W0-jXf" firstAttribute="leading" secondItem="6eE-tu-HDn" secondAttribute="leading" constant="8" id="WsB-ng-iPN"/>
+                                                        <constraint firstItem="pGE-2V-TZY" firstAttribute="leading" secondItem="6eE-tu-HDn" secondAttribute="leading" constant="8" id="aJS-S0-yZi"/>
                                                         <constraint firstItem="hyE-2O-prg" firstAttribute="leading" secondItem="6eE-tu-HDn" secondAttribute="leading" constant="8" id="aPE-70-qPA"/>
                                                         <constraint firstAttribute="trailing" secondItem="d3K-2v-epm" secondAttribute="trailing" constant="4" id="bkY-gA-Q7t"/>
                                                         <constraint firstItem="wFH-W0-jXf" firstAttribute="top" secondItem="6eE-tu-HDn" secondAttribute="top" constant="8" id="dfD-bE-L3e"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ffm-qz-FGu" secondAttribute="trailing" constant="4" id="e7b-G7-sjV"/>
                                                         <constraint firstAttribute="trailing" secondItem="wFH-W0-jXf" secondAttribute="trailing" constant="8" id="qam-dV-6iQ"/>
                                                         <constraint firstItem="Ffm-qz-FGu" firstAttribute="leading" secondItem="6eE-tu-HDn" secondAttribute="leading" constant="8" id="sZF-cC-RTH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="pGE-2V-TZY" secondAttribute="trailing" constant="4" id="tXu-ce-PK9"/>
                                                         <constraint firstItem="L9h-Ev-RMT" firstAttribute="leading" secondItem="6eE-tu-HDn" secondAttribute="leading" constant="8" id="xWu-8U-aiQ"/>
                                                     </constraints>
                                                 </view>
@@ -1763,12 +1778,14 @@
                                     <outlet property="constraint_altura_altura" destination="U5P-Vb-Of5" id="dQ6-C8-Sgn"/>
                                     <outlet property="constraint_altura_comprimento" destination="SbB-Sq-NoL" id="HJJ-CS-JcX"/>
                                     <outlet property="constraint_altura_massa" destination="D53-Ec-Yvx" id="2Vw-Xd-td8"/>
+                                    <outlet property="constraint_altura_obs" destination="ybr-Qq-G7n" id="JYt-QY-VYD"/>
                                     <outlet property="constraint_altura_painel" destination="A73-P6-Mbw" id="S8l-Nm-pvz"/>
                                     <outlet property="label_altura" destination="hyE-2O-prg" id="f13-AK-L8p"/>
                                     <outlet property="label_ambiente" destination="OpM-8n-Kag" id="nYz-Vm-6hb"/>
                                     <outlet property="label_comprimento" destination="Ffm-qz-FGu" id="C7m-BW-chT"/>
                                     <outlet property="label_largura" destination="cjI-VG-Bcz" id="RQs-Il-q7W"/>
                                     <outlet property="label_massa" destination="d3K-2v-epm" id="2ze-6O-ynj"/>
+                                    <outlet property="label_observacao" destination="pGE-2V-TZY" id="Db7-jM-Cly"/>
                                     <outlet property="label_valor" destination="L9h-Ev-RMT" id="bS7-bF-iin"/>
                                 </connections>
                             </tableViewCell>
