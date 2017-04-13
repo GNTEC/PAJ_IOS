@@ -38,6 +38,8 @@ class CelulaOrcamentoPrincipalComplexaDetalheTableViewCell: UITableViewCell, UIT
     @IBOutlet weak var constraint_altura_portas: NSLayoutConstraint!
     @IBOutlet weak var constraint_altura_janelas: NSLayoutConstraint!
     @IBOutlet weak var constraint_altura_interruptores: NSLayoutConstraint!
+    @IBOutlet weak var constraint_altura_obs: NSLayoutConstraint!
+    
     @IBOutlet weak var constraint_altura_painel_dados: NSLayoutConstraint!
     
     @IBOutlet weak var constraint_altura_botao_parede_avulsa: NSLayoutConstraint!

@@ -1188,6 +1188,7 @@
                                             <outlet property="constraint_altura_interruptores" destination="Vym-Ws-Dul" id="hlE-G9-ghC"/>
                                             <outlet property="constraint_altura_janelas" destination="JmY-wU-xpY" id="Leb-Up-WDY"/>
                                             <outlet property="constraint_altura_largura" destination="bAl-uh-J9i" id="DEb-1T-T3U"/>
+                                            <outlet property="constraint_altura_obs" destination="827-dB-GqC" id="5lZ-Qo-Tuz"/>
                                             <outlet property="constraint_altura_painel_dados" destination="rzx-uc-4Xt" id="INU-J8-eR3"/>
                                             <outlet property="constraint_altura_portas" destination="IfF-DS-zln" id="HWf-UN-FhI"/>
                                             <outlet property="edit_altura" destination="hfe-24-FkJ" id="JUx-1A-paH"/>

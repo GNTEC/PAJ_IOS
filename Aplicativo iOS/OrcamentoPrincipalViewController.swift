@@ -63,7 +63,7 @@ class OrcamentoPrincipalViewController: UIViewController, UITableViewDelegate, U
     
     let ALTURA_VIEW_NAO_VISIVEL : CGFloat = 0.0
     let ALTURA_VIEW_DADOS : CGFloat  = 53.0
-    let ALTURA_PAINEL_DADOS : CGFloat = 415.0
+    let ALTURA_PAINEL_DADOS : CGFloat = 460.0
     
     let ALTURA_BOTAO_DUPLICAR : CGFloat = 48.0
     let ALTURA_BOTAO_COR : CGFloat = 48.0
@@ -75,7 +75,7 @@ class OrcamentoPrincipalViewController: UIViewController, UITableViewDelegate, U
 
     let ALTURA_MAXIMA_CELULA_DETALHE_COMPLEXO : CGFloat = 470.0
     // tamanho máximo sem ocultar nenhum campo do painel com as medidas (altura, largura, etc)
-    let ALTURA_MAXIMA_PAINEL_MEDIDAS : CGFloat = 415.0
+    let ALTURA_MAXIMA_PAINEL_MEDIDAS : CGFloat = 460.0
     // mesma coisa para os botões
     let ALTURA_MAXIMA_PAINEL_BOTOES : CGFloat = 408.0
 
@@ -492,8 +492,12 @@ class OrcamentoPrincipalViewController: UIViewController, UITableViewDelegate, U
                 cell_cd.label_interruptores.isHidden = !itemComplexoDetalhe.exibeQuantidadeInterruptores
                 cell_cd.constraint_altura_interruptores.constant = itemComplexoDetalhe.exibeQuantidadeInterruptores ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL
                 
-                cell_cd.constraint_altura_painel_dados.constant = ALTURA_PAINEL_DADOS - (!itemComplexoDetalhe.exibeAltura ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL) - (!itemComplexoDetalhe.exibeComprimento ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL) - (!itemComplexoDetalhe.exibeQuantidadePortas ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL) - (!itemComplexoDetalhe.exibeQuantidadeJanelas ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL) - (!itemComplexoDetalhe.exibeQuantidadeInterruptores ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL)
+                cell_cd.edit_obs.isHidden = !itemComplexoDetalhe.exibeObs
+                cell_cd.label_obs.isHidden = !itemComplexoDetalhe.exibeObs
+                cell_cd.constraint_altura_obs.constant = itemComplexoDetalhe.exibeObs ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL
                 
+                cell_cd.constraint_altura_painel_dados.constant = ALTURA_PAINEL_DADOS - (!itemComplexoDetalhe.exibeAltura ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL) - (!itemComplexoDetalhe.exibeComprimento ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL) - (!itemComplexoDetalhe.exibeQuantidadePortas ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL) - (!itemComplexoDetalhe.exibeQuantidadeJanelas ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL) - (!itemComplexoDetalhe.exibeQuantidadeInterruptores ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL) - (!itemComplexoDetalhe.exibeObs ? ALTURA_VIEW_DADOS : ALTURA_VIEW_NAO_VISIVEL)
+
                 cell_cd.botao_excluir.isHidden = !itemComplexoDetalhe.exibeBotaoExcluir
                 
                 cell_cd.botao_teto_avulso.isHidden = !itemComplexoDetalhe.exibeBotaoTetoAvulso
