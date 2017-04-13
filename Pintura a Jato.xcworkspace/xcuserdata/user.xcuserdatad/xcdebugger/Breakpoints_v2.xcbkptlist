@@ -161,6 +161,38 @@
             endingLineNumber = "478"
             landmarkName = "onConfirmar()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pintura_a_Jato.OrcamentoConfirmacaoViewController.onConfirmar () -&gt; ()"
+                  moduleName = "Pintura a Jato"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Projetos/paj/PAJ_IOS/Aplicativo%20iOS/OrcamentoConfirmacaoViewController.swift"
+                  timestampString = "513776174.468885"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "478"
+                  endingLineNumber = "478"
+                  offsetFromSymbolStart = "2281">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pintura_a_Jato.OrcamentoConfirmacaoViewController.(onConfirmar () -&gt; ()).(closure #1)"
+                  moduleName = "Pintura a Jato"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Projetos/paj/PAJ_IOS/Aplicativo%20iOS/OrcamentoConfirmacaoViewController.swift"
+                  timestampString = "513776174.471699"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "480"
+                  endingLineNumber = "480"
+                  offsetFromSymbolStart = "54">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -192,6 +224,22 @@
             startingLineNumber = "1370"
             endingLineNumber = "1370"
             landmarkName = "gerarConteudoApiInsercao(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Aplicativo iOS/OrcamentoPrincipalViewController.swift"
+            timestampString = "513630638.795945"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "973"
+            endingLineNumber = "973"
+            landmarkName = "selecionaMassaCorrida(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

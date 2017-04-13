@@ -97,14 +97,17 @@ class MenuLateralViewController: UIViewController {
     }
     @IBAction func onLoja(_ sender: AnyObject) {
         
-        if InicioViewController.avaliaAcessoPermitido() {
-            
-            self.mm_drawerController.toggle(MMDrawerSide.left, animated: false, completion: { _ in })
-            let storyboard = UIStoryboard(name: "Loja", bundle: nil)
-            let controller = storyboard.instantiateInitialViewController()
-            //[self presentViewController:controller animated:TRUE completion:nil];
-            self.navigationController!.pushViewController(controller!, animated: true)
-        }
+        
+        AvisoProcessamento.mensagemErroGenerico("Em Manutenção")
+        
+//        if InicioViewController.avaliaAcessoPermitido() {
+//            
+//            self.mm_drawerController.toggle(MMDrawerSide.left, animated: false, completion: { _ in })
+//            let storyboard = UIStoryboard(name: "Loja", bundle: nil)
+//            let controller = storyboard.instantiateInitialViewController()
+//            //[self presentViewController:controller animated:TRUE completion:nil];
+//            self.navigationController!.pushViewController(controller!, animated: true)
+//        }
     }
     
     @IBAction func onFinanceiro(_ sender: AnyObject) {
