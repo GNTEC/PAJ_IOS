@@ -36,8 +36,8 @@ class LoginViewController : UIViewController {
         self.navigationItem.title = "Fazer Login"
         
 #if DEBUG
-        text_email.text = "robsonmedeiros@uol.com.br"
-        text_senha.text = "1"
+        text_email.text = "franquiateste@pinturaajato.com"
+        text_senha.text = "123456"
 #endif
         
         ////////////////////////////////////////////////////////////////////////

@@ -308,6 +308,8 @@ class ItemOrcamentoComplexoDetalhe : ItemOrcamento {
         if(exibeQuantidadeInterruptores && (quantidadeInterruptores == nil || quantidadeInterruptores!.isEmpty) ) {
             listaErros.append(ItemErroOrcamento(indice: indice, descricao: "Quantidade de interruptores/tomadas", ambiente:self.texto(), tipoErroOrcamento: .naoPreenchido));
         }
+        
+        
         if(configuracaoMassaCorrida && necessitaMassaCorrida == nil) {
             listaErros.append(ItemErroOrcamento(indice: indice, descricao: "Opção de massa corrida", ambiente:self.texto(), tipoErroOrcamento: .naoSelecionado));
         }

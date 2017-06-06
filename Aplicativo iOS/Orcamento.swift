@@ -1715,6 +1715,7 @@ class Orcamento {
                     itemOrcamentoComplexoDetalhe.necessitaMassaCorrida = (orcamentoItem.massa_corrida! == 1);
                 }
                 itemOrcamentoComplexoDetalhe.quantidadeInterruptores = String(format:"%d", orcamentoItem.interruptores);
+                itemOrcamentoComplexoDetalhe.observacao = orcamentoItem.observacao
                 itemOrcamentoComplexoDetalhe.quantidadeJanelas = String(format:"%d", orcamentoItem.janelas);
                 itemOrcamentoComplexoDetalhe.quantidadePortas = String(format:"%d", orcamentoItem.portas);
                 

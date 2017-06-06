@@ -108,7 +108,7 @@ class PinturaAJatoApi {
                 
                 self.trataErroGenerico(resposta.result.error as NSError?)
                 return
-                
+
             }
         }
     }

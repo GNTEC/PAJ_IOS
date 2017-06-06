@@ -11,6 +11,7 @@ import Foundation
 enum TipoDetalheComplexo : String {
     case Ambiente = "Ambiente"
     case ParedeAvulsa = "ParedeAvulsa"
-    case TetoAvulso = "TetoAvulso"
+    //case TetoAvulso = "TetoAvulso"
+    case TetoAvulso = "SomenteTeto"
     case AmbienteCompleto = "AmbienteCompleto"
 }
