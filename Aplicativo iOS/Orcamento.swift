@@ -589,6 +589,7 @@ class Orcamento {
             itemOrcamentoNovo.exibeComprimento = (false);
             itemOrcamentoNovo.exibeAltura = (true);
             itemOrcamentoNovo.exibeQuantidadeInterruptores = (true);
+            itemOrcamentoNovo.exibeObs = (true)
             itemOrcamentoNovo.exibeQuantidadePortas = (true);
             itemOrcamentoNovo.exibeQuantidadeJanelas = (true);
             itemOrcamentoNovo.exibeBotaoTetoAvulso = false;
@@ -625,6 +626,7 @@ class Orcamento {
             itemOrcamentoNovo.exibeComprimento = (true);
             itemOrcamentoNovo.exibeAltura = (false);
             itemOrcamentoNovo.exibeQuantidadeInterruptores = (false);
+            itemOrcamentoNovo.exibeObs = (true)
             itemOrcamentoNovo.exibeQuantidadePortas = (false);
             itemOrcamentoNovo.exibeQuantidadeJanelas = (false);
             itemOrcamentoNovo.exibeBotaoTetoAvulso = (false);
@@ -811,6 +813,7 @@ class Orcamento {
                 itemOrcamentoDuplicado.exibeComprimento = (true);
                 itemOrcamentoDuplicado.exibeAltura = (false);
                 itemOrcamentoDuplicado.exibeQuantidadeInterruptores = (false);
+                itemOrcamentoDuplicado.exibeObs = (true);
                 itemOrcamentoDuplicado.exibeQuantidadePortas = (false);
                 itemOrcamentoDuplicado.exibeQuantidadeJanelas = (false);
 
@@ -1075,6 +1078,7 @@ class Orcamento {
                 itemOrcamentoComplexoDetalhe.exibeQuantidadePortas = (false);
                 itemOrcamentoComplexoDetalhe.exibeQuantidadeJanelas = (false);
                 itemOrcamentoComplexoDetalhe.exibeQuantidadeInterruptores = (false);
+                itemOrcamentoComplexoDetalhe.exibeObs = (true);
                 break;
             default:
                 break
@@ -1762,6 +1766,7 @@ class Orcamento {
                     itemOrcamentoComplexoDetalhe.exibeBotaoTetoAvulso = (false);
                     itemOrcamentoComplexoDetalhe.exibeAltura = (true);
                     itemOrcamentoComplexoDetalhe.exibeQuantidadeInterruptores = (true);
+                    itemOrcamentoComplexoDetalhe.exibeObs = (true)
                     itemOrcamentoComplexoDetalhe.exibeQuantidadePortas = (true);
                     itemOrcamentoComplexoDetalhe.exibeQuantidadeJanelas = (true);
                     itemOrcamentoComplexoDetalhe.exibeBotaoAmbienteCompleto = (false);
@@ -1789,6 +1794,7 @@ class Orcamento {
                     itemOrcamentoComplexoDetalhe.exibeBotaoTetoAvulso = (false);
                     itemOrcamentoComplexoDetalhe.exibeAltura = (false);
                     itemOrcamentoComplexoDetalhe.exibeQuantidadeInterruptores = (false);
+                    itemOrcamentoComplexoDetalhe.exibeObs = (true)
                     itemOrcamentoComplexoDetalhe.exibeQuantidadePortas = (false);
                     itemOrcamentoComplexoDetalhe.exibeQuantidadeJanelas = (false);
                     itemOrcamentoComplexoDetalhe.exibeBotaoAmbienteCompleto = (false);

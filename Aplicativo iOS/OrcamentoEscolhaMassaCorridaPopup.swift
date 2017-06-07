@@ -14,6 +14,14 @@ class OrcamentoEscolhaMassaCorridaPopup : UIView {
     @IBOutlet weak var botao_sim: UIButton!
     @IBOutlet weak var botao_nao: UIButton!
     @IBOutlet weak var botao_fechar: UIButton!
+    @IBOutlet weak var viewInterna: UIView!
+    @IBOutlet weak var viewAreaUmidaSeca: UIView!
+    @IBOutlet weak var botao_areas_umidas: UIButton!
+    @IBOutlet weak var botao_areas_secas: UIButton!
+    
+    @IBOutlet weak var contraintHeightViewInterna: NSLayoutConstraint!
+    
+    
     var itemOrcamento: ItemOrcamentoComplexoDetalhe?
     
     func defineItemOrcamento(_ itemOrcamento: ItemOrcamentoComplexoDetalhe?) {
@@ -39,6 +47,8 @@ class OrcamentoEscolhaMassaCorridaPopup : UIView {
         
         botao_sim.isSelected = true
         botao_nao.isSelected = false
+        viewAreaUmidaSeca.isHidden = false
+        desvabilitaBotoesAreaUmicaSeca()
         
         itemOrcamento?.necessitaMassaCorrida = true
     }
@@ -47,9 +57,24 @@ class OrcamentoEscolhaMassaCorridaPopup : UIView {
         
         botao_sim.isSelected = false
         botao_nao.isSelected = true
+        viewAreaUmidaSeca.isHidden = true
+        desvabilitaBotoesAreaUmicaSeca()
         
         itemOrcamento?.necessitaMassaCorrida = false
     }
+    
+    @IBAction func onAreasSecas(_ sender: AnyObject) {
+        
+        botao_areas_secas.isSelected = true
+        botao_areas_umidas.isSelected = false
+    }
+    
+    @IBAction func onAreasUmidas(_ sender: AnyObject) {
+        
+        botao_areas_umidas.isSelected = true
+        botao_areas_secas.isSelected = false
+    }
+    
     
     @IBAction func onFechar(_ sender: AnyObject) {
         
@@ -59,6 +84,13 @@ class OrcamentoEscolhaMassaCorridaPopup : UIView {
         else {
             self.removeFromSuperview()
         }
+    }
+    
+    func desvabilitaBotoesAreaUmicaSeca () {
+        
+        botao_areas_secas.isSelected = false
+        botao_areas_umidas.isSelected = false
+    
     }
     
     func exibeAlerta(_ mensagem: String, textoBotao: String) {
