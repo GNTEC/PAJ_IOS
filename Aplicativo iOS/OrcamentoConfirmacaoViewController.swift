@@ -537,6 +537,7 @@ class OrcamentoConfirmacaoViewController : UITableViewController, NotificaOrcame
     
     func persisteOrcamento() {
         
+        //var tipoPagamento = TipoPagamento.Nenhum
         let franqueado = PinturaAJatoApi.obtemFranqueado()
         
         var jsonObject = mOrcamento!.gerarConteudoApiInsercao(franqueado!.id_franquia)
@@ -552,11 +553,19 @@ class OrcamentoConfirmacaoViewController : UITableViewController, NotificaOrcame
             //var tipoPagamento: TipoPagamento?
             //var numero_parcelas = 1
             
-            jsonObject!["forma_de_pagamento"] = (escolhaPagamento.formaPagamento.rawValue as AnyObject?)
-            jsonObject!["meio_de_pagamento"] = (escolhaPagamento.meioPagamento.rawValue as AnyObject?)
-            jsonObject!["numero_parcelas"] = (escolhaPagamento.parcelas as AnyObject?)
-            jsonObject!["status_pagamento"] = "0" as AnyObject?
-            
+        jsonObject!["forma_de_pagamento"] = (escolhaPagamento.formaPagamento.rawValue as AnyObject?)
+        if String(escolhaPagamento.formaPagamento.rawValue) == TipoPagamento.ComEntrada.rawValue {
+            jsonObject!["valor_residual"] = ((itemOrcamentoConclusao?.valorCalculado)! * 0.85 as AnyObject?)
+        }
+    
+        if String(escolhaPagamento.formaPagamento.rawValue) == TipoPagamento.Parcelado.rawValue {
+            jsonObject!["valor_parcelas"] = ((itemOrcamentoConclusao?.valorCalculado)! / Float(escolhaPagamento.parcelas) as AnyObject?)
+        }
+        
+        jsonObject!["meio_de_pagamento"] = (escolhaPagamento.meioPagamento.rawValue as AnyObject?)
+        jsonObject!["numero_parcelas"] = (escolhaPagamento.parcelas as AnyObject?)
+        jsonObject!["status_pagamento"] = "0" as AnyObject?
+        
         //}
         //catch {
             

@@ -1331,8 +1331,6 @@ class Orcamento {
                 raiz["valor"] = resultadoCalculo!.valorTotal * 0.95 as AnyObject?
             }
             
-            //itemOrcamentoConclusao.valorAVista = (resultadoCalculo!.valorTotal * 0.95);
-            
             if(resultadoCalculo == nil)
             {
                 raiz["valor_bruto"] = 0.0 as AnyObject?
