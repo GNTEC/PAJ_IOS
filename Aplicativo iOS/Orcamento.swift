@@ -1328,8 +1328,10 @@ class Orcamento {
             }
             else
             {
-                raiz["valor"] = resultadoCalculo!.valorTotal as AnyObject?
+                raiz["valor"] = resultadoCalculo!.valorTotal * 0.95 as AnyObject?
             }
+            
+            //itemOrcamentoConclusao.valorAVista = (resultadoCalculo!.valorTotal * 0.95);
             
             if(resultadoCalculo == nil)
             {
@@ -1389,8 +1391,8 @@ class Orcamento {
                 json_item_complexo["portas"] = (itemOrcamentoComplexoDetalhe.quantidadePortas as AnyObject?);
                 json_item_complexo["janelas"] = (itemOrcamentoComplexoDetalhe.quantidadeJanelas as AnyObject?);
                 json_item_complexo["interruptores"] = (itemOrcamentoComplexoDetalhe.quantidadeInterruptores as AnyObject?);
-                json_item_complexo["observacao"] = (itemOrcamentoComplexoDetalhe.observacao as AnyObject?)
                 json_item_complexo["indice"] = itemOrcamentoComplexoDetalhe.indice as AnyObject?
+                json_item_complexo["observacao"] = (itemOrcamentoComplexoDetalhe.observacao as AnyObject?)
                 
                 if(itemOrcamentoComplexoDetalhe.configuracaoMassaCorrida) {
                     let necessitaMassaCorridaString = (itemOrcamentoComplexoDetalhe.necessitaMassaCorrida == nil ? "0" : (itemOrcamentoComplexoDetalhe.necessitaMassaCorrida! ? "1" : "0"))

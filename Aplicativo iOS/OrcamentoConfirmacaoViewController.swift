@@ -157,7 +157,7 @@ class OrcamentoConfirmacaoViewController : UITableViewController, NotificaOrcame
                         
                         self.prossegueErroCalculo(resultado?.mensagem);
                         
-                        return false
+                         return false
                     }
                     
                     let resultadoCalculo = self.mOrcamento?.atualizaResultadoCalculo(objeto!)

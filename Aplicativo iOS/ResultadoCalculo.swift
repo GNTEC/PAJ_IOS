@@ -11,12 +11,14 @@ import Foundation
 class ResultadoCalculo {
     
     var valorTotal: Float
+    var valorAVista: Float
     var diasTotal: Int
     
     init() {
      
         diasTotal = 0
         valorTotal = 0.0
+        valorAVista = 0.0
     }
     
 }
