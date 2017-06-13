@@ -200,8 +200,6 @@ class PinturaAJatoApi {
                     
                     sucesso(login?.orcamento, (login?.resultado?.erro)!)
                 }
-                
-                
         }
     }
     
