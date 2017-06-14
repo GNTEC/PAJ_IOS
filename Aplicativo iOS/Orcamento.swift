@@ -1027,10 +1027,11 @@ class Orcamento {
                 itemComplexoDetalhe.configuracaoMassaCorrida = (true);
                 break;
             case TipoPintura.SomenteParedes:
-                // Se é teto avulso, não tem parede pra pintar
-                if tipoDetalheComplexo != TipoDetalheComplexo.TetoAvulso {
-                    itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
-                }
+//                // Se é teto avulso, não tem parede pra pintar
+//                if tipoDetalheComplexo != TipoDetalheComplexo.TetoAvulso {
+//                    itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
+//                }
+                itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
                 itemComplexoDetalhe.configuracaoMassaCorrida = (true);
                 break;
             case TipoPintura.SomenteTeto:
