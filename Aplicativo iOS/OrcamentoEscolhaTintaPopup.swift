@@ -108,7 +108,8 @@ class OrcamentoEscolhaTintaPopup: UIView {
     static let padroesTipoTinta2 = [ TipoTinta.Incolor ]
     static let padroesTipoTinta3 = [ TipoTinta.EsmalteBaseAgua, TipoTinta.EsmalteSintetico ]
     
-    static let padroesAcabamentoTinta1 = [ AcabamentoTinta.Brilhante, AcabamentoTinta.Fosco, AcabamentoTinta.Semibrilho ]
+    //static let padroesAcabamentoTinta1 = [ AcabamentoTinta.Brilhante, AcabamentoTinta.Fosco, AcabamentoTinta.Semibrilho ]
+    static let padroesAcabamentoTinta1 = [ AcabamentoTinta.Acetinado, AcabamentoTinta.Fosco, AcabamentoTinta.Semibrilho ]
     static let padroesAcabamentoTinta2 = [ AcabamentoTinta.Fosco, AcabamentoTinta.Semibrilho ]
     static let padroesAcabamentoTinta3 = [ AcabamentoTinta.Fosco ]
     static let padroesAcabamentoTinta4 = [ AcabamentoTinta.Brilhante ]
