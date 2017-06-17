@@ -95,8 +95,8 @@ class ItemOrcamentoComplexoDetalhe : ItemOrcamento {
         exibeBotaoExcluir = true
         exibeBotaoParedeAvulsa = true
         configuracaoMassaCorrida = false
-        exibeBotaoTetoAvulso = false
-        exibeBotaoAmbienteCompleto = false
+        exibeBotaoTetoAvulso = true
+        exibeBotaoAmbienteCompleto = true
         super.init()
         tipo = TipoItem.complexoDetalhe
         necessitaMassaCorrida = nil

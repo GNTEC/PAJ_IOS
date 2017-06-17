@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="FontAwesome.ttf">
+        <array key="fontawesome-webfont.ttf">
             <string>FontAwesome</string>
         </array>
     </customFonts>
@@ -469,7 +469,7 @@
                         <viewControllerLayoutGuide type="bottom" id="eEh-WL-8AU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xBc-Of-woI">
-                        <rect key="frame" x="0.0" y="64" width="600" height="1736"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="2436"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfF-hh-4jW">
@@ -520,7 +520,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o87-q7-ATL">
-                                <rect key="frame" x="0.0" y="47" width="600" height="1689"/>
+                                <rect key="frame" x="0.0" y="47" width="600" height="2389"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CelulaOrcamentoPrincipalSimplesTableViewCell" rowHeight="130" id="g5c-Ts-Kml" customClass="CelulaOrcamentoPrincipalSimplesTableViewCell" customModule="Pintura_a_Jato" customModuleProvider="target">
@@ -1549,7 +1549,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="1800"/>
+                    <size key="freeformSize" width="600" height="2500"/>
                     <connections>
                         <outlet property="tableView" destination="o87-q7-ATL" id="3cH-VT-y31"/>
                         <segue destination="8Tw-GH-IoL" kind="show" identifier="SegueOrcamentoPrincipalParaConfirmacao" id="LGx-H0-H5M"/>
@@ -1557,7 +1557,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUp-zd-Sva" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1834" y="1688"/>
+            <point key="canvasLocation" x="1818" y="2163"/>
         </scene>
         <!--Confirmação-->
         <scene sceneID="kZx-gk-h2a">
@@ -2443,7 +2443,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9hJ-OV-dNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3387" y="1150"/>
+            <point key="canvasLocation" x="3982" y="1150"/>
         </scene>
         <!--Dados Cadastrais-->
         <scene sceneID="pPa-Vh-Fv5">
@@ -2799,7 +2799,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Cd-KU-YqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4408" y="970"/>
+            <point key="canvasLocation" x="5166" y="970"/>
         </scene>
         <!--Pagamento-->
         <scene sceneID="BHV-5k-NyH">
@@ -3000,7 +3000,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xRi-MQ-llH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5395" y="1150"/>
+            <point key="canvasLocation" x="6198" y="1150"/>
         </scene>
         <!--Finalizar-->
         <scene sceneID="A0a-cc-HKX">
@@ -3510,14 +3510,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uH-JS-m9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6416" y="1105"/>
+            <point key="canvasLocation" x="7374" y="1133"/>
         </scene>
         <!--Checklist-->
         <scene sceneID="Dgs-Bw-zcU">
             <objects>
                 <tableViewController storyboardIdentifier="OrcamentoChecklistViewController" title="Checklist" modalTransitionStyle="flipHorizontal" id="l59-wz-qgg" customClass="OrcamentoChecklistViewController" customModule="Pintura_a_Jato" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="Div-xz-nIy">
-                        <rect key="frame" x="0.0" y="64" width="600" height="936"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="1436"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="FNY-Oj-qLt">
@@ -4280,7 +4280,7 @@
                     </tableView>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="1000"/>
+                    <size key="freeformSize" width="600" height="1500"/>
                     <connections>
                         <outlet property="label_data_pedido" destination="lG6-S8-4Ky" id="oxu-NF-0Sa"/>
                         <outlet property="label_valor_total" destination="DJh-Sq-smf" id="x5Y-nL-8Xp"/>
@@ -5353,7 +5353,7 @@
         <image name="user-plus_icon" width="231" height="191"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Xvn-ex-E7x"/>
         <segue reference="LGx-H0-H5M"/>
-        <segue reference="zF9-CW-Nzz"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -192,10 +192,10 @@ class OrcamentoPrincipalViewController: UIViewController, UITableViewDelegate, U
                 });
             break;
         case OpcoesSelecaoComplexa.adicionar:
-            orcamento!.novoDetalheComplexo(itemOrcamento, tipoDetalheComplexo: TipoDetalheComplexo.Ambiente);
+            orcamento!.novoDetalheComplexo(itemOrcamento, tipoDetalheComplexo: .Ambiente);
             break;
         case OpcoesSelecaoComplexa.paredeAvulsa:
-            orcamento!.novoDetalheComplexo(itemOrcamento, tipoDetalheComplexo: TipoDetalheComplexo.ParedeAvulsa);
+            orcamento!.novoDetalheComplexo(itemOrcamento, tipoDetalheComplexo: .ParedeAvulsa);
             break;
         case OpcoesSelecaoComplexa.duplicar:
             orcamento!.duplicarItemOrcamento(itemOrcamento);
