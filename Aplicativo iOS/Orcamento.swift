@@ -571,8 +571,8 @@ class Orcamento {
             idDescricaoItem =  "mascara_ambiente"
             break
         case TipoDetalheComplexo.ParedeAvulsa:
-            //novaSequencia = -1;
-            novaSequencia = novaSequenciaAmbiente();
+            novaSequencia = -1;
+            //novaSequencia = novaSequenciaAmbiente();
             idDescricaoItem = "mascara_parede_avulsa"
             break
         case TipoDetalheComplexo.TetoAvulso:
@@ -1018,28 +1018,48 @@ class Orcamento {
             switch (tipoPintura) {
             case TipoPintura.ParedesETeto:
                 // Se é teto avulso, não tem parede pra pintar
-                if tipoDetalheComplexo != TipoDetalheComplexo.TetoAvulso {
+                if tipoDetalheComplexo == TipoDetalheComplexo.ParedeAvulsa {
+                    itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
+                }
+                else if tipoDetalheComplexo == TipoDetalheComplexo.TetoAvulso
+                {
+                    itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Teto);
+                }
+                else if tipoDetalheComplexo == TipoDetalheComplexo.Ambiente
+                {
+                    itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Teto);
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
                 }
                 itemComplexoDetalhe.configuracaoMassaCorrida = (true);
                 break;
             case TipoPintura.SomenteParedes:
                 // Se é teto avulso, não tem parede pra pintar
-                if tipoDetalheComplexo != TipoDetalheComplexo.TetoAvulso {
+                if tipoDetalheComplexo == TipoDetalheComplexo.ParedeAvulsa {
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
                 }
+                else if tipoDetalheComplexo == TipoDetalheComplexo.TetoAvulso
+                {
+                    itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Teto);
+                }
+                else if tipoDetalheComplexo == TipoDetalheComplexo.Ambiente
+                {
+                    itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
+                }
+                
                 itemComplexoDetalhe.configuracaoMassaCorrida = (true);
                 break;
             case TipoPintura.SomenteTeto:
                 // Se é parede avulsa, não tem teto pra pintar
-                if tipoDetalheComplexo != TipoDetalheComplexo.ParedeAvulsa {
+                if tipoDetalheComplexo == TipoDetalheComplexo.ParedeAvulsa {
+                    itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
+                }
+                else if tipoDetalheComplexo == TipoDetalheComplexo.TetoAvulso
+                {
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Teto);
                 }
-                else if tipoDetalheComplexo == TipoDetalheComplexo.ParedeAvulsa
+                else if tipoDetalheComplexo == TipoDetalheComplexo.Ambiente
                 {
-                    //itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Janelas);
-                    itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
-                    //itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Portas);
+                    itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Teto);
                 }
                 itemComplexoDetalhe.configuracaoMassaCorrida = (true);
                 break;
