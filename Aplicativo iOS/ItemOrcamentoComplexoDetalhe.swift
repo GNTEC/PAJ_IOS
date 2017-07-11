@@ -83,6 +83,8 @@ class ItemOrcamentoComplexoDetalhe : ItemOrcamento {
     
     let LIMITE_ALTURA: Float = 4.0
     
+    var tipoPintura: String?
+    
     override init() {
         tipoDetalheComplexo = TipoDetalheComplexo.Ambiente
         id = 0
@@ -100,6 +102,7 @@ class ItemOrcamentoComplexoDetalhe : ItemOrcamento {
         super.init()
         tipo = TipoItem.complexoDetalhe
         necessitaMassaCorrida = nil
+        tipoPintura = tipoDetalheComplexo.rawValue
     }
     
     func atualizaNomeAmbienteOuSequencia(/*String nomeAmbiente,*/ _ novaSequencia: Int ) {
@@ -185,6 +188,8 @@ class ItemOrcamentoComplexoDetalhe : ItemOrcamento {
         
         self.necessitaMassaCorrida = itemOrcamentoCopiar.necessitaMassaCorrida;
         self.configuracaoMassaCorrida = itemOrcamentoCopiar.configuracaoMassaCorrida;
+        
+        tipoPintura = tipoDetalheComplexo.rawValue
     }
     
     func configuracaoTinta(_ localPintura: LocalPintura) ->  ConfiguracaoTinta? {

@@ -459,8 +459,24 @@ class OrcamentoFinalizarViewController : UIViewController {
             "id_sessao": PinturaAJatoApi.obtemIdSessao() as AnyObject
         ]
         
-        contexto!.valorParcela = (contexto!.parcelas! > 1) ? (contexto!.valorDebito / (Float)(contexto!.parcelas!)) : 0.0;
-
+        if contexto?.tipoPagamento == TipoPagamento.Parcelado {
+            
+            if contexto!.parcelas == 2
+            {
+                contexto?.valorParcela = contexto!.valorPagamento / 2
+            }
+            
+            if contexto!.parcelas == 3
+            {
+                contexto?.valorParcela = contexto!.valorPagamento / 3
+            }
+        }
+        else
+        {
+            contexto!.valorParcela = (contexto!.parcelas! > 1) ? (contexto!.valorDebito / (Float)(contexto!.parcelas!)) : 0.0;
+        }
+        
+        
         var detalhe = ""
         
         switch contexto!.tipoMeioPagamento! {
@@ -475,18 +491,39 @@ class OrcamentoFinalizarViewController : UIViewController {
             break
         }
         
-        if contexto!.parcelas == 1 {
-            detalhe += "à vista"
-        }
-        else {
-            detalhe += "parcelado em \(contexto!.parcelas)x"
+        switch contexto!.tipoPagamento! {
+        case TipoPagamento.AVista:
+             detalhe += "à vista"
+             label_valor_total.text = Valor.floatParaMoedaString(contexto!.valorPagamento * 0.5)
+             label_valor_parcela.text = Valor.floatParaStringValor(contexto!.valorParcela)
+            break
+        case TipoPagamento.ComEntrada:
+            detalhe += "15 % Agora mais 85% no inicio do seriço "
+            label_valor_total.text = Valor.floatParaMoedaString(contexto!.valorPagamento * 0.85)
+            label_valor_parcela.text = Valor.floatParaStringValor(contexto!.valorParcela * 0.15)
+            break
+        case TipoPagamento.Parcelado:
+            label_valor_total.text = Valor.floatParaMoedaString(contexto!.valorPagamento)
+            label_valor_parcela.text = Valor.floatParaMoedaString(contexto!.valorParcela)
+            if contexto!.parcelas == 2
+            {
+                detalhe += "parcelado em 2x"
+            }
+            
+            if contexto!.parcelas == 3
+            {
+                detalhe += "parcelado em 3x"
+                
+            }
+            break
+        default:
+            break
+            
         }
         
         label_pagamento.text = detalhe
         label_final_cartao.text = contexto!.cartao?.substring(from: contexto!.cartao!.characters.index(contexto!.cartao!.endIndex, offsetBy: -4))
-        label_valor_total.text = Valor.floatParaMoedaString(contexto!.valorPagamento)
-        label_valor_parcela.text = Valor.floatParaStringValor(contexto!.valorParcela)
-        
+    
         imagemCheckMarcado = self.iconeListaPequeno("check", cor: self.corCinzaBullet(), corFundo: UIColor.clear)
         imagemCheckDesmarcado = self.iconeListaPequeno("unchecked", cor: self.corCinzaBullet(), corFundo: UIColor.clear)
 

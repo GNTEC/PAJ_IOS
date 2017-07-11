@@ -13,4 +13,5 @@ enum TipoPintura : String {
     case ParedesETeto = "ParedesETeto"
     case SomenteParedes = "SomenteParedes"
     case SomenteTeto = "SomenteTeto"
+    case ParedeAvulsa = "ParedeAvulsa"
 }

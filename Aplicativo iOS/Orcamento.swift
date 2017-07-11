@@ -270,7 +270,7 @@ class Orcamento {
             }
             
             // Quando é teto/parede avulsa, só pode remover se for item do mesmo pai
-            if ( (tipoDetalheComplexo == TipoDetalheComplexo.ParedeAvulsa || tipoDetalheComplexo == TipoDetalheComplexo.TetoAvulso) && itemOrcamentoDetalheAjustar.itemOrcamentoPai?.indice != itemOrcamentoPai?.indice) {
+            if ( (tipoDetalheComplexo == TipoDetalheComplexo.SomenteParedes || tipoDetalheComplexo == TipoDetalheComplexo.TetoAvulso) && itemOrcamentoDetalheAjustar.itemOrcamentoPai?.indice != itemOrcamentoPai?.indice) {
                 
                 Registro.registraDebug("atualizaSequenciaItemComplexoDetalhe: (3) não é do mesmo pai: item/pai esperado \(itemOrcamentoDetalheAjustar.indice)/\(itemOrcamentoPai?.indice)");
                 continue;
@@ -579,6 +579,10 @@ class Orcamento {
             novaSequencia = -1;
             idDescricaoItem = "mascara_teto_avulso"
             break
+        case TipoDetalheComplexo.SomenteParedes:
+            novaSequencia = -1;
+            idDescricaoItem = "mascara_parede_avulsa"
+            break
         }
 
         let itemOrcamentoNovo = criaNovoItemOrcamentoComplexoDetalhe(itemOrcamentoRaiz!.tipoPintura, tipoDetalheComplexo: tipoDetalheComplexo, idTexto: idDescricaoItem, sequencia: novaSequencia);
@@ -798,6 +802,7 @@ class Orcamento {
             if(itemOrcamentoOriginal.tipoDetalheComplexo == TipoDetalheComplexo.ParedeAvulsa) {
                 itemOrcamentoDuplicado.exibeBotaoParedeAvulsa = (false);
                 itemOrcamentoDuplicado.exibeComprimento = (false);
+                itemOrcamentoDuplicado.exibeAltura = (true);
                 
                 // Está adicionando de outra parede avulsa, adicionamos o ambiente pai da original
                 itemOrcamentoDuplicado.itemOrcamentoPai = itemOrcamentoOriginal.itemOrcamentoPai
@@ -1012,6 +1017,8 @@ class Orcamento {
             itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
             itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Teto);
             itemComplexoDetalhe.configuracaoMassaCorrida = (true);
+            itemComplexoDetalhe.tipoPintura = "AmbienteCompleto"
+            //AmbienteCompleto
         }
         else {
 
@@ -1020,46 +1027,66 @@ class Orcamento {
                 // Se é teto avulso, não tem parede pra pintar
                 if tipoDetalheComplexo == TipoDetalheComplexo.ParedeAvulsa {
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
+                    itemComplexoDetalhe.tipoPintura = "ParedeAvulsa"
+                    //"ParedeAvulsa"
                 }
                 else if tipoDetalheComplexo == TipoDetalheComplexo.TetoAvulso
                 {
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Teto);
+                    itemComplexoDetalhe.tipoPintura = "SomenteTeto"
+                    //"SomenteTeto"
                 }
                 else if tipoDetalheComplexo == TipoDetalheComplexo.Ambiente
                 {
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Teto);
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
+                    itemComplexoDetalhe.tipoPintura = "Ambiente"
                 }
                 itemComplexoDetalhe.configuracaoMassaCorrida = (true);
                 break;
+                
             case TipoPintura.SomenteParedes:
                 // Se é teto avulso, não tem parede pra pintar
                 if tipoDetalheComplexo == TipoDetalheComplexo.ParedeAvulsa {
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
+                    itemComplexoDetalhe.tipoPintura = "ParedeAvulsa"
+                    //ParedeAvulsa
                 }
                 else if tipoDetalheComplexo == TipoDetalheComplexo.TetoAvulso
                 {
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Teto);
+                    itemComplexoDetalhe.tipoPintura = "SomenteTeto"
+                    //SomenteTeto
                 }
                 else if tipoDetalheComplexo == TipoDetalheComplexo.Ambiente
                 {
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
+                    itemComplexoDetalhe.tipoPintura = TipoPintura.SomenteParedes.rawValue
+                    itemComplexoDetalhe.tipoPintura = "SomenteParedes"
+                    //SomenteParedes
                 }
                 
                 itemComplexoDetalhe.configuracaoMassaCorrida = (true);
                 break;
+                
             case TipoPintura.SomenteTeto:
                 // Se é parede avulsa, não tem teto pra pintar
                 if tipoDetalheComplexo == TipoDetalheComplexo.ParedeAvulsa {
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Paredes);
+                    itemComplexoDetalhe.tipoPintura = "ParedeAvulsa"
+                    //ParedeAvulsa
                 }
                 else if tipoDetalheComplexo == TipoDetalheComplexo.TetoAvulso
                 {
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Teto);
+                    itemComplexoDetalhe.tipoPintura = "SomenteTeto"
+                    //SomenteTeto
                 }
                 else if tipoDetalheComplexo == TipoDetalheComplexo.Ambiente
                 {
                     itemComplexoDetalhe.adicionaConfiguracaoTinta(LocalPintura.Teto);
+                    itemComplexoDetalhe.tipoPintura = "Ambiente"
+                    //Abiente
                 }
                 itemComplexoDetalhe.configuracaoMassaCorrida = (true);
                 break;
@@ -1090,6 +1117,8 @@ class Orcamento {
             // Os demais itens devem ser iguais a ParedesETeto
         }
         else {
+            
+            var strTipoAmbienteComplexo = tipoDetalheComplexo.rawValue as? String
             switch (tipoPintura) {
             case TipoPintura.ParedesETeto:
                 break;
@@ -1097,11 +1126,19 @@ class Orcamento {
                 itemOrcamentoComplexoDetalhe.exibeComprimento = (false);
                 break;
             case TipoPintura.SomenteTeto:
-                itemOrcamentoComplexoDetalhe.exibeAltura = (false);
-                itemOrcamentoComplexoDetalhe.exibeQuantidadePortas = (false);
-                itemOrcamentoComplexoDetalhe.exibeQuantidadeJanelas = (false);
-                itemOrcamentoComplexoDetalhe.exibeQuantidadeInterruptores = (false);
-                itemOrcamentoComplexoDetalhe.exibeObs = (true);
+                
+                if strTipoAmbienteComplexo == "ParedeAvulsa" {
+                    
+                    itemOrcamentoComplexoDetalhe.exibeAltura = (true);
+                }
+                else
+                {
+                    itemOrcamentoComplexoDetalhe.exibeAltura = (false);
+                    itemOrcamentoComplexoDetalhe.exibeQuantidadePortas = (false);
+                    itemOrcamentoComplexoDetalhe.exibeQuantidadeJanelas = (false);
+                    itemOrcamentoComplexoDetalhe.exibeQuantidadeInterruptores = (false);
+                    itemOrcamentoComplexoDetalhe.exibeObs = (true);
+                }
                 break;
             default:
                 break
@@ -1314,7 +1351,6 @@ class Orcamento {
                     
                     array_itens_trinca.append(item_trinca)
                 }
-                
                 raiz["orcamento_trinca"] = array_itens_trinca as AnyObject?
             //}
             
@@ -1404,7 +1440,37 @@ class Orcamento {
                 
                 let itemOrcamentoComplexoDetalhe = itemOrcamento as! ItemOrcamentoComplexoDetalhe;
                 
-                json_item_complexo["tipo_registro"] = (itemOrcamentoComplexoDetalhe.tipoDetalheComplexo.rawValue as AnyObject?);
+                //json_item_complexo["tipo_registro"] = (itemOrcamentoComplexoDetalhe.tipoDetalheComplexo as AnyObject?);
+                
+                var strT:String = (itemOrcamentoComplexoDetalhe.tipoDetalheComplexo.rawValue as? String)!
+                
+                if (strT == "ParedeAvulsa" || strT == "SomenteParedes") && itemOrcamentoComplexoDetalhe.tipoPintura == "Ambiente"{
+                    json_item_complexo["tipo_registro"] = "ParedeAvulsa" as AnyObject
+                }
+                    
+                else if strT == "AmbienteCompleto" {
+                   json_item_complexo["tipo_registro"] = "Ambiente" as AnyObject
+                }
+                else
+                {
+                    json_item_complexo["tipo_registro"] = (itemOrcamentoComplexoDetalhe.tipoDetalheComplexo.rawValue as AnyObject?);
+                }
+                
+                
+                let strPergunta4 = Array(raiz.values)[7] as? String
+                
+                //let strPergunta4 =    as String//raiz.index(forKey: "pergunta_4") as? String
+                
+                
+                if strPergunta4 == "SomenteParedes" && itemOrcamentoComplexoDetalhe.tipoDetalheComplexo.rawValue == "Ambiente"
+                {
+                    json_item_complexo["tipo_registro"] = "ParedeAvulsa" as AnyObject
+                }else
+                {
+                    json_item_complexo["tipo_registro"] = (itemOrcamentoComplexoDetalhe.tipoDetalheComplexo.rawValue as AnyObject?);
+                }
+                
+                //json_item_complexo["tipo_registro"] = (strT as AnyObject?);
                 json_item_complexo["descricao"] = (itemOrcamentoComplexoDetalhe.texto() as AnyObject?);
                 json_item_complexo["altura"] = (itemOrcamentoComplexoDetalhe.altura as AnyObject?);
                 json_item_complexo["largura"] = (itemOrcamentoComplexoDetalhe.largura as AnyObject?);
@@ -1714,14 +1780,34 @@ class Orcamento {
         
         if(orcamentoGerado.orcamento_item != nil) {
             
+            var tipoRegistroComplexo: String = ""
+            var strTipoPintura: String = ""
+            
             var ultimoAmbienteCriado: ItemOrcamentoComplexoDetalhe? = nil
-            let descricao = mOrcamento!.descricaoItemComplexo(tipoPintura);
+            
+            var descricao = "" //mOrcamento!.descricaoItemComplexo(tipoPintura);
+            
+            if  tipoPintura.rawValue == "Ambiente"  {
+                descricao = mOrcamento!.descricaoItemComplexo(TipoPintura.ParedesETeto)!;
+            }
+            
+            if  tipoPintura.rawValue == "SomenteParedes"  {
+                descricao = mOrcamento!.descricaoItemComplexo(TipoPintura.SomenteParedes)!;
+            }
+            
+            if  tipoPintura.rawValue == "SomenteTeto"  {
+                descricao = mOrcamento!.descricaoItemComplexo(TipoPintura.SomenteTeto)!;
+            }
+            
+            if  tipoPintura.rawValue == "ParedesETeto"  {
+                descricao = mOrcamento!.descricaoItemComplexo(TipoPintura.ParedesETeto)!;
+            }
             
             let itemOrcamentoComplexo = ItemOrcamentoComplexo();
             
             itemOrcamentoComplexo.indice = mOrcamento!.novoIndiceOrcamento()
             itemOrcamentoComplexo.tipoPintura = tipoPintura
-            //itemOrcamentoComplexo.sequencia = mOrcamento.novaSequenciaAmbiente());
+            //itemOrcamentoComplexo.sequencia = (mOrcamento?.novaSequenciaAmbiente())!;
             itemOrcamentoComplexo.idTexto = descricao
             itemOrcamentoComplexo.exibeSequencia = false
             
@@ -1730,13 +1816,40 @@ class Orcamento {
             for orcamentoItem in orcamentoGerado.orcamento_item! {
                 
                 let itemOrcamentoComplexoDetalhe = ItemOrcamentoComplexoDetalhe()
+
+                //let tipoDetalheComplexo = TipoDetalheComplexo(rawValue: orcamentoItem.tipo_registro!)
+            
+                if  orcamentoItem.tipo_registro == "Ambiente" {
+                    tipoRegistroComplexo = "Ambiente"
+                }
                 
-                let tipoDetalheComplexo = TipoDetalheComplexo(rawValue: orcamentoItem.tipo_registro!)
+                if orcamentoItem.tipo_registro == "ParedesETeto" {
+                    tipoRegistroComplexo = "Ambiente"
+                }
+                
+                if  orcamentoItem.tipo_registro == "SomenteParedes"  {
+                    tipoRegistroComplexo = "SomenteParedes"
+                }
+                
+                if  orcamentoItem.tipo_registro == "SomenteTeto"  {
+                    tipoRegistroComplexo = "SomenteTeto"
+                }
+                
+                if  orcamentoItem.tipo_registro == "ParedeAvulsa"  {
+                    tipoRegistroComplexo = "ParedeAvulsa"
+                }
+                
+                if  orcamentoItem.tipo_registro == "AmbienteCompleto"  {
+                    tipoRegistroComplexo = "AmbienteCompleto"
+                }
+                
+                let tipoDetalheComplexo = TipoDetalheComplexo(rawValue: tipoRegistroComplexo)
                 
                 itemOrcamentoComplexoDetalhe.id = orcamentoItem.id
                 itemOrcamentoComplexoDetalhe.altura = orcamentoItem.altura
                 itemOrcamentoComplexoDetalhe.largura = orcamentoItem.largura
                 itemOrcamentoComplexoDetalhe.comprimento = orcamentoItem.comprimento
+                
                 itemOrcamentoComplexoDetalhe.tipoDetalheComplexo = (tipoDetalheComplexo)!;
                 if orcamentoItem.massa_corrida != nil {
                     itemOrcamentoComplexoDetalhe.necessitaMassaCorrida = (orcamentoItem.massa_corrida! == 1);
@@ -1752,6 +1865,7 @@ class Orcamento {
                 novaSequencia = nil
 
                 if(tipoDetalheComplexo == TipoDetalheComplexo.Ambiente || tipoDetalheComplexo == TipoDetalheComplexo.AmbienteCompleto) {
+                
 
                     //novaSequencia = mOrcamento!.novaSequenciaAmbiente();
                     idDescricaoItem =  "mascara_ambiente"
@@ -1794,10 +1908,64 @@ class Orcamento {
                     itemOrcamentoComplexoDetalhe.exibeQuantidadeJanelas = (true);
                     itemOrcamentoComplexoDetalhe.exibeBotaoAmbienteCompleto = (false);
                     itemOrcamentoComplexoDetalhe.configuracaoMassaCorrida = true;
-
-                    mOrcamento!.adicionaAmbiente(novaSequencia == nil ? orcamentoItem.descricao : nil, id_texto: idDescricaoItem, sequencia: novaSequencia, textoAlternativoPai: ultimoAmbienteCriado?.textoAlternativo, id_texto_pai: ultimoAmbienteCriado!.idTexto, sequencia_pai: ultimoAmbienteCriado!.sequencia);
-
+                    
+        
+                    var textoAlternativo01: String = ""
+                    var sequencia01: Int = 0
+                    var idTexto01: String = ""
+                    
+                    if ultimoAmbienteCriado != nil {
+                        
+                        textoAlternativo01 = (orcamentoItem.descricao)!
+                        sequencia01 = ultimoAmbienteCriado!.sequencia
+                        idTexto01 = ultimoAmbienteCriado!.idTexto!
+                    }
+                    
+                    mOrcamento!.adicionaAmbiente(novaSequencia == nil ? orcamentoItem.descricao : nil, id_texto: idTexto01, sequencia: novaSequencia,textoAlternativoPai: textoAlternativo01,id_texto_pai: idTexto01, sequencia_pai: sequencia01)
+                    
                 }
+                    
+                else if tipoDetalheComplexo == TipoDetalheComplexo.SomenteParedes {
+                    
+                    idDescricaoItem = "mascara_parede_avulsa"
+                    
+                    if ultimoAmbienteCriado != nil {
+                        
+                        novaSequencia = extraiSequenciaTexto(orcamentoItem.descricao, idTexto: idDescricaoItem!)
+                        
+                        //novaSequencia = mOrcamento!.novaSequenciaParedeAvulsa(ultimoAmbienteCriado!.indice);
+                        itemOrcamentoComplexoDetalhe.itemOrcamentoPai = ultimoAmbienteCriado
+                    }
+                    else {
+                        novaSequencia = 1; // Contingência, não deve acontecer
+                    }
+                    itemOrcamentoComplexoDetalhe.exibeComprimento = (false);
+                    itemOrcamentoComplexoDetalhe.exibeBotaoParedeAvulsa = (false);
+                    itemOrcamentoComplexoDetalhe.exibeBotaoTetoAvulso = (false);
+                    itemOrcamentoComplexoDetalhe.exibeAltura = (true);
+                    itemOrcamentoComplexoDetalhe.exibeQuantidadeInterruptores = (true);
+                    itemOrcamentoComplexoDetalhe.exibeObs = (true)
+                    itemOrcamentoComplexoDetalhe.exibeQuantidadePortas = (true);
+                    itemOrcamentoComplexoDetalhe.exibeQuantidadeJanelas = (true);
+                    itemOrcamentoComplexoDetalhe.exibeBotaoAmbienteCompleto = (false);
+                    itemOrcamentoComplexoDetalhe.configuracaoMassaCorrida = true;
+                    
+                    
+                    var textoAlternativo01: String = ""
+                    var sequencia01: Int = 0
+                    var idTexto01: String = ""
+                    
+                    if ultimoAmbienteCriado != nil {
+                        
+                        textoAlternativo01 = (orcamentoItem.descricao)!
+                        sequencia01 = ultimoAmbienteCriado!.sequencia
+                        idTexto01 = ultimoAmbienteCriado!.idTexto!
+                    }
+                    
+                    mOrcamento!.adicionaAmbiente(novaSequencia == nil ? orcamentoItem.descricao : nil, id_texto: idTexto01, sequencia: novaSequencia,textoAlternativoPai: textoAlternativo01,id_texto_pai: idTexto01, sequencia_pai: sequencia01)
+                    
+                }
+
                 else if tipoDetalheComplexo == TipoDetalheComplexo.TetoAvulso {
 
                     idDescricaoItem =  "mascara_teto_avulso"
@@ -1822,8 +1990,20 @@ class Orcamento {
                     itemOrcamentoComplexoDetalhe.exibeQuantidadeJanelas = (false);
                     itemOrcamentoComplexoDetalhe.exibeBotaoAmbienteCompleto = (false);
                     itemOrcamentoComplexoDetalhe.configuracaoMassaCorrida = true;
-
-                    mOrcamento!.adicionaAmbiente(novaSequencia == nil ? orcamentoItem.descricao : nil, id_texto: idDescricaoItem, sequencia: novaSequencia, textoAlternativoPai: ultimoAmbienteCriado?.textoAlternativo, id_texto_pai: ultimoAmbienteCriado!.idTexto, sequencia_pai: ultimoAmbienteCriado!.sequencia);
+                    
+                    var textoAlternativo01: String = ""
+                    var sequencia01: Int = 0
+                    var idTexto01: String = ""
+                    
+                    if ultimoAmbienteCriado != nil {
+                        
+                        textoAlternativo01 = (orcamentoItem.descricao)!
+                        sequencia01 = ultimoAmbienteCriado!.sequencia
+                        idTexto01 = ultimoAmbienteCriado!.idTexto!
+                    }
+                    
+                    mOrcamento!.adicionaAmbiente(novaSequencia == nil ? orcamentoItem.descricao : nil, id_texto: idTexto01, sequencia: novaSequencia,textoAlternativoPai: textoAlternativo01,id_texto_pai: idTexto01, sequencia_pai: sequencia01)
+                    
                 }
                 else {
                     return nil
@@ -2057,8 +2237,10 @@ class Orcamento {
         
         switch (tipoPintura) {
         case  TipoPintura.ParedesETeto:
-            return "literal_paredes_teto"
+            return "literal_somente_paredes"
         case TipoPintura.SomenteParedes:
+            return "literal_somente_paredes"
+        case TipoPintura.ParedeAvulsa:
             return "literal_somente_paredes"
         case TipoPintura.SomenteTeto:
             return "literal_somente_teto"
@@ -2119,6 +2301,7 @@ class Orcamento {
 
         mudaNomeAmbienteInterno(itemAmbienteTrinca, novoNome: novoNome)
     }
+
     
     func mudaNomeAmbienteInterno(_ itemBuscar: ItemAmbienteTrinca, novoNome: String?) {
         
@@ -2413,7 +2596,7 @@ class Orcamento {
     func mudouNomeAmbiente(_ itemCopia: ItemOrcamentoComplexoDetalhe, novoNome: String ) -> Void {
 
         Registro.registraDebug("mudouNomeAmbiente: Mudando nome ambiente de \(itemCopia.texto()) para \(novoNome)");
-
+    
         if novoNome.characters.count == 0 {
             if mNotificadorMudanca != nil {
                 mNotificadorMudanca?.notificaErro("Nome de ambiente inválido", mensagemTecnica: nil)
@@ -2435,12 +2618,16 @@ class Orcamento {
         //}
 
         if itemCopia.itemOrcamentoPai == nil {
+            
+            //mudaNomeAmbiente(itemCopia.textoAlternativo, id_texto: itemCopia.idTexto, sequencia: itemCopia.sequencia, novoNome: novoNome)
             mudaNomeAmbiente(itemCopia.textoAlternativo, id_texto: itemCopia.idTexto, sequencia: itemCopia.sequencia, novoNome: novoNome)
+            
         }
         else {
             mudaNomeAmbiente(itemCopia, itemOrcamentoPai: itemCopia.itemOrcamentoPai!, novoNome: novoNome)
         }
         
+
         // Atualiza o nome no objeto do orçamento e nos locais de pintura
         itemOrcamentoAtualizar.texto(novoNome);
 

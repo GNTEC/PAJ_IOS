@@ -168,6 +168,9 @@ class CelulaOrcamentoPrincipalComplexaDetalheTableViewCell: UITableViewCell, UIT
         case .AmbienteCompleto:
             self.interacao?(itemOrcamento, OpcoesSelecaoComplexa.adicionarAmbienteCompleto);
             break
+        case .SomenteParedes:
+            self.interacao?(itemOrcamento, OpcoesSelecaoComplexa.adicionar);
+            break
         }
     }
     
