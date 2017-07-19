@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="fontawesome-webfont.ttf">
+        <array key="FontAwesome.ttf">
             <string>FontAwesome</string>
         </array>
     </customFonts>
@@ -671,7 +671,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ambiente Completo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWI-ga-fAR">
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ambiente Completo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWI-ga-fAR">
                                                     <rect key="frame" x="58" y="8" width="534" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Lim-Wl-tei"/>
@@ -5353,7 +5353,7 @@
         <image name="user-plus_icon" width="231" height="191"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ff3-CR-6NT"/>
+        <segue reference="LGx-H0-H5M"/>
         <segue reference="zF9-CW-Nzz"/>
     </inferredMetricsTieBreakers>
 </document>
